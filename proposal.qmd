@@ -51,8 +51,24 @@ The two questions you want to answer.
 
 Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?
 
-Question 2 :
+Question 2 : What is the relationship between the size of the electorate and the number of polling places, and how does this relationship vary across states?
 
 ## Analysis plan
 
 -   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
+
+Analysis plan for question 1 :
+
+-   The Variables involved : Independent variable - year (election_date), Dependent Variable : Number of polling places(count), Sate, Location Type, Location Details (precinct_name).
+
+-   Preparation the data : Extract the year from the "election_date" variable to create the "year" variable. And next group the data by year and count the number of unique polling places for each year.
+
+-   Analysis : Plot with years on the x-axis and number of polling places on the y-axis to visualize trends and also analyze changes in polling places across states.
+
+    Analysis plan for question 2 :
+
+-   The Variables involved : Independent variable - electorate_size , Dependent variable - Number of polling Places(count), Sate, election_date
+
+-   Preparation of data : Calculate the electorate size for each state and election date. This may involve aggregating voter turnout. And next group the data and count the number of unique polling places.
+
+-   Analysis : Examine electorate size vs number of polling places and also comparing the relationship between electorate size and polling places across different states.
