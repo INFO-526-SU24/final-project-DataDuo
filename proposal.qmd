@@ -57,7 +57,7 @@ Question 2 : What is the relationship between the size of the electorate and the
 
 -   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
 
-Analysis plan for question 1 :
+\# Analysis plan for question 1 :
 
 -   The Variables involved : Independent variable - year (election_date), Dependent Variable : Number of polling places(count), Sate, Location Type, Location Details (precinct_name).
 
@@ -65,7 +65,7 @@ Analysis plan for question 1 :
 
 -   Analysis : Plot with years on the x-axis and number of polling places on the y-axis to visualize trends and also analyze changes in polling places across states.
 
-    Analysis plan for question 2 :
+    \# Analysis plan for question 2 :
 
 -   The Variables involved : Independent variable - electorate_size , Dependent variable - Number of polling Places(count), Sate, election_date
 
