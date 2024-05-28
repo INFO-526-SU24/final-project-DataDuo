@@ -1,11 +1,11 @@
 ---
-title: "Proposal title"
-subtitle: "Proposal"
+title: "US Polling Places 2012-2020"
+subtitle: "Tracking Changes in US Polling Places from 2012 to 2020"
 author: 
-  - name: "Team Name"
+  - name: "DataDuo"
     affiliations:
       - name: "School of Information, University of Arizona"
-description: "Project description"
+description: "This project aims to analyze the changes in US polling places over the period from 2012 to 2020, examining trends and shifts in polling location availability at the county level."
 format:
   html:
     code-tools: true
