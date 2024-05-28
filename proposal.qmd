@@ -51,7 +51,7 @@ The two questions you want to answer.
 
 Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?
 
-Question 2 : What is the relationship between the size of the electorate and the number of polling places, and how does this relationship vary across states?
+Question 2 :
 
 ## Analysis plan
 
