@@ -22,6 +22,7 @@ execute:
 #| label: load-pkgs
 #| message: false
 library(tidyverse)
+library(lubridate)
 ```
 
 ## Dataset
@@ -29,15 +30,28 @@ library(tidyverse)
 ```{r}
 #| label: load-dataset
 #| message: false
+polling_places <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-16/polling_places.csv')
+glimpse(polling_places)
+
+dim(polling_places)
+names(polling_places)
 ```
 
 A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.
 
 Make sure to load the data and use inline code for some of this information.
 
+\# Dataset Description
+
+The dataset contains information on US polling places from 2012 to 2020, including locations, years active, demographic information of precincts, voter turnout, and changes in polling place locations over time. The dataset has rows and columns. It was chosen to analyze trends and factors influencing polling place changes and voter accessibility
+
 ## Questions
 
 The two questions you want to answer.
+
+Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?
+
+Question 2 :
 
 ## Analysis plan
 
