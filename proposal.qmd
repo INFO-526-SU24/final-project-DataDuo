@@ -72,3 +72,18 @@ Question 2 : How does the availability of polling places vary between urban and 
 -   Preparation of the data: Classifying each polling place as either urban or rural based on its location. Group the data by area type and count the number of unique polling places for each combination of area type, state, and election date.
 
 -   Analysis: Explore the distribution of polling places between urban and rural areas. And then calculate the voter turnout for urban and rural areas and compare them.
+
+    -   Plan of Attack
+
+        | Task Name            | Status      | Assignee      | Due  | Priority  | Summary/Comments                                      |
+        |----------------------|-------------|---------------|------|-----------|-------------------------------------------------------|
+        | Select Dataset       | Complete    | Luis /Jeevana | 5/28 | High      | Uploaded files to data folder                         |
+        | Proposal             | In Progress | Luis/Jeevana  | 6/3  | High      | Continue updating proposal                            |
+        | Explore Data         | In Progress | Luis/Jeevana  | 6/1  | Moderate  | Identify important variables                          |
+        | Create New Variables | In Progress | Luis/Jeevana  | 5/31 | Moderate  | Select and review variables by due date.              |
+        | Visualization Draft  | Not Started | Luis/Jeevana  | 6/3  | Moderate  | Attempt first visualization                           |
+        | Presentation Draft   | Not Started | Luis/Jeevana  | 6/7  | Moderate  | Complete first presentation draft with visualizations |
+        | Website Draft        | Not Started | Luis/Jeevana  | 6/7  | Moderate  | Draft Website                                         |
+        | Write Up Draft       | Not Started | Luis/Jeevana  | 6/14 | Moderate  | Complete first write-up draft                         |
+        | Final Draft (All)    | No started  | Luis/Jeevana  | 6/21 | High      | Complete documents                                    |
+        | Final Presentation   | Not started | Luis/Jeevana  | 6/24 | High      | Deliver/Submit Presentation, write-up, and website.   |
