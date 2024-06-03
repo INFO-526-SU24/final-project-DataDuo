@@ -18,11 +18,28 @@ execute:
   warning: false
 ---
 
-```{r}
+```{r setup}
 #| label: load-pkgs
 #| message: false
-library(tidyverse)
-library(lubridate)
+if (!require("pacman")) 
+  install.packages("pacman")
+
+# use this line for installing/loading
+pacman::p_load(tidyverse,
+               lubridate)
+# set width of code output
+options(width = 65)
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  warning = FALSE, 
+  message = FALSE,
+  fig.width = 7,        # 7" width
+  fig.asp = 0.618,      # the golden ratio
+  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300             # higher dpi, sharper image
+)
 ```
 
 ## Dataset
@@ -75,15 +92,15 @@ Question 2 : How does the availability of polling places vary between urban and 
 
     -   Plan of Attack
 
-        | Task Name            | Status      | Assignee      | Due  | Priority  | Summary/Comments                                      |
-        |----------------------|-------------|---------------|------|-----------|-------------------------------------------------------|
-        | Select Dataset       | Complete    | Luis /Jeevana | 5/28 | High      | Uploaded files to data folder                         |
-        | Proposal             | In Progress | Luis/Jeevana  | 6/3  | High      | Continue updating proposal                            |
-        | Explore Data         | In Progress | Luis/Jeevana  | 6/1  | Moderate  | Identify important variables                          |
-        | Create New Variables | In Progress | Luis/Jeevana  | 5/31 | Moderate  | Select and review variables by due date.              |
-        | Visualization Draft  | Not Started | Luis/Jeevana  | 6/3  | Moderate  | Attempt first visualization                           |
-        | Presentation Draft   | Not Started | Luis/Jeevana  | 6/7  | Moderate  | Complete first presentation draft with visualizations |
-        | Website Draft        | Not Started | Luis/Jeevana  | 6/7  | Moderate  | Draft Website                                         |
-        | Write Up Draft       | Not Started | Luis/Jeevana  | 6/14 | Moderate  | Complete first write-up draft                         |
-        | Final Draft (All)    | No started  | Luis/Jeevana  | 6/21 | High      | Complete documents                                    |
-        | Final Presentation   | Not started | Luis/Jeevana  | 6/24 | High      | Deliver/Submit Presentation, write-up, and website.   |
+        | Task Name            | Status      | Assignee      | Due  | Priority | Summary/Comments                                      |
+        |----------|----------|----------|----------|----------|-----------------------|
+        | Select Dataset       | Complete    | Luis /Jeevana | 5/28 | High     | Uploaded files to data folder                         |
+        | Proposal             | In Progress | Luis/Jeevana  | 6/3  | High     | Continue updating proposal                            |
+        | Explore Data         | In Progress | Luis/Jeevana  | 6/1  | Moderate | Identify important variables                          |
+        | Create New Variables | In Progress | Luis/Jeevana  | 5/31 | Moderate | Select and review variables by due date.              |
+        | Visualization Draft  | Not Started | Luis/Jeevana  | 6/3  | Moderate | Attempt first visualization                           |
+        | Presentation Draft   | Not Started | Luis/Jeevana  | 6/7  | Moderate | Complete first presentation draft with visualizations |
+        | Website Draft        | Not Started | Luis/Jeevana  | 6/7  | Moderate | Draft Website                                         |
+        | Write Up Draft       | Not Started | Luis/Jeevana  | 6/14 | Moderate | Complete first write-up draft                         |
+        | Final Draft (All)    | No started  | Luis/Jeevana  | 6/21 | High     | Complete documents                                    |
+        | Final Presentation   | Not started | Luis/Jeevana  | 6/24 | High     | Deliver/Submit Presentation, write-up, and website.   |
