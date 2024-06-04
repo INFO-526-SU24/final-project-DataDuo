@@ -2,30 +2,30 @@
   {
     "objectID": "proposal.html",
     "href": "proposal.html",
-    "title": "Proposal title",
+    "title": "US Polling Places 2012-2020",
     "section": "",
-    "text": "library(tidyverse)"
+    "text": "if (!require(\"pacman\")) \n  install.packages(\"pacman\")\n\n# use this line for installing/loading\npacman::p_load(tidyverse,\n               lubridate)\n# set width of code output\noptions(width = 65)\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  warning = FALSE, \n  message = FALSE,\n  fig.width = 7,        # 7\" width\n  fig.asp = 0.618,      # the golden ratio\n  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300             # higher dpi, sharper image\n)"
   },
   {
     "objectID": "proposal.html#dataset",
     "href": "proposal.html#dataset",
-    "title": "Proposal title",
+    "title": "US Polling Places 2012-2020",
     "section": "Dataset",
-    "text": "Dataset\nA brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.\nMake sure to load the data and use inline code for some of this information."
+    "text": "Dataset\n\npolling_places &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-16/polling_places.csv')\nglimpse(polling_places)\n\nRows: 461,445\nColumns: 15\n$ election_date     &lt;date&gt; 2020-11-03, 2020-11-03, 2020-11-03, …\n$ state             &lt;chr&gt; \"AL\", \"AL\", \"AL\", \"AL\", \"AL\", \"AL\", \"…\n$ county_name       &lt;chr&gt; \"AUTAUGA\", \"AUTAUGA\", \"AUTAUGA\", \"AUT…\n$ jurisdiction      &lt;chr&gt; \"AUTAUGA\", \"AUTAUGA\", \"AUTAUGA\", \"AUT…\n$ jurisdiction_type &lt;chr&gt; \"county\", \"county\", \"county\", \"county…\n$ precinct_id       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ precinct_name     &lt;chr&gt; \"AUTAUGAVILLE VOL FIRE DEPT\", \"BILLIN…\n$ polling_place_id  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ location_type     &lt;chr&gt; \"election_day\", \"election_day\", \"elec…\n$ name              &lt;chr&gt; \"AUTAUGAVILLE VOL FIRE DEPT\", \"BILLIN…\n$ address           &lt;chr&gt; \"2610 HIGHWAY 14 W, AUTAUGAVILLE, AL …\n$ notes             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ source            &lt;chr&gt; \"ORR\", \"ORR\", \"ORR\", \"ORR\", \"ORR\", \"O…\n$ source_date       &lt;date&gt; 2020-10-21, 2020-10-21, 2020-10-21, …\n$ source_notes      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n\ndim(polling_places)\n\n[1] 461445     15\n\nnames(polling_places)\n\n [1] \"election_date\"     \"state\"             \"county_name\"      \n [4] \"jurisdiction\"      \"jurisdiction_type\" \"precinct_id\"      \n [7] \"precinct_name\"     \"polling_place_id\"  \"location_type\"    \n[10] \"name\"              \"address\"           \"notes\"            \n[13] \"source\"            \"source_date\"       \"source_notes\"     \n\n\nA brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.\nMake sure to load the data and use inline code for some of this information."
   },
   {
     "objectID": "proposal.html#questions",
     "href": "proposal.html#questions",
-    "title": "Proposal title",
+    "title": "US Polling Places 2012-2020",
     "section": "Questions",
-    "text": "Questions\nThe two questions you want to answer."
+    "text": "Questions\nThe two questions you want to answer.\nQuestion 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?\nQuestion 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?"
   },
   {
     "objectID": "proposal.html#analysis-plan",
     "href": "proposal.html#analysis-plan",
-    "title": "Proposal title",
+    "title": "US Polling Places 2012-2020",
     "section": "Analysis plan",
-    "text": "Analysis plan\n\nA plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any)."
+    "text": "Analysis plan\n\nA plan for answering each of the questions including the variables involved, variables to be created (if any), and external data to be merged in (if any).\n\n\nAnalysis plan for question 1 :\n\nThe Variables involved: Independent variable - year (election_date), Dependent Variable: Number of polling places(count), State, Location Type, Location Details (precinct_name).\nPreparation of the data: Extract the year from the “election_date” variable to create the “year” variable. And next group the data by year and count the number of unique polling places for each year.\nAnalysis: Plot with years on the x-axis and number of polling places on the y-axis to visualize trends and also analyze changes in polling places across states.\n\n\n\nAnalysis plan for question 2 :\n\nThe Variables involved: Independent variable - area type (urban/Rural) , Dependent variable - Number of polling Places(count), state, election_date\nPreparation of the data: Classifying each polling place as either urban or rural based on its location. Group the data by area type and count the number of unique polling places for each combination of area type, state, and election date.\nAnalysis: Explore the distribution of polling places between urban and rural areas. And then calculate the voter turnout for urban and rural areas and compare them.\n\n#Plan of Attack\n    | Task Name            | Status      | Assignee      | Due  | Priority | Summary/Comments                                      |\n    |----------------------|-------------|---------------|------|----------|-----------------------|\n    | Select Dataset       | Complete    | Luis /Jeevana | 5/28 | High     | Uploaded files to data folder                         |\n    | Proposal             | In Progress | Luis/Jeevana  | 6/3  | High     | Continue updating proposal                            |\n    | Explore Data         | In Progress | Luis/Jeevana  | 6/1  | Moderate | Identify important variables                          |\n    | Create New Variables | In Progress | Luis/Jeevana  | 5/31 | Moderate | Select and review variables by due date.              |\n    | Visualization Draft  | Not Started | Luis/Jeevana  | 6/3  | Moderate | Attempt first visualization                           |\n    | Presentation Draft   | Not Started | Luis/Jeevana  | 6/7  | Moderate | Complete first presentation draft with visualizations |\n    | Website Draft        | Not Started | Luis/Jeevana  | 6/7  | Moderate | Draft Website                                         |\n    | Write Up Draft       | Not Started | Luis/Jeevana  | 6/14 | Moderate | Complete first write-up draft                         |\n    | Final Draft (All)    | No started  | Luis/Jeevana  | 6/21 | High     | Complete documents                                    |\n    | Final Presentation   | Not started | Luis/Jeevana  | 6/24 | High     | Deliver/Submit Presentation, write-up, and website.   |"
   },
   {
     "objectID": "index.html",
@@ -110,5 +110,12 @@
     "title": "About",
     "section": "",
     "text": "This project was developed by [Team Name] For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nTeam member 1: One sentence description of Team member 1 (e.g., year, major, etc.).\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.).\nTeam member 3: One sentence description of Team member 3 (e.g., year, major, etc.).\nTeam member 4: One sentence description of Team member 4 (e.g., year, major, etc.)."
+  },
+  {
+    "objectID": "proposal.html#dataset-description",
+    "href": "proposal.html#dataset-description",
+    "title": "US Polling Places 2012-2020",
+    "section": "Dataset Description",
+    "text": "Dataset Description\nThe dataset contains information on US polling places from 2012 to 2020, including locations, years active, demographic information of precincts, voter turnout, and changes in polling place locations over time. The dataset has rows and columns. It was chosen to analyze trends and factors influencing polling place changes and voter accessibility"
   }
 ]
