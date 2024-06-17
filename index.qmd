@@ -1,11 +1,11 @@
 ---
-title: "Project Title"
-subtitle: "INFO 526 - Summer 2024 - Final Project"
+title: "US Polling Places 2012-2020"
+subtitle: "Tracking Changes in US Polling Places from 2012 to 2020"
 author: 
-  - name: "Team name"
+  - name: "DataDuo"
     affiliations:
       - name: "School of Information, University of Arizona"
-description: "Project description"
+description: "This project aims to analyze the changes in US polling places over the period from 2012 to 2020, examining trends and shifts in polling location availability at the county level."
 format:
    html:
     code-tools: true
@@ -19,4 +19,6 @@ execute:
 
 ## Abstract
 
-Add project abstract here.
+This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset that includes information on polling locations, years active, demographic details of precincts, voter turnout, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions.
+
+Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and what impact does this disparity have on voter turnout?
