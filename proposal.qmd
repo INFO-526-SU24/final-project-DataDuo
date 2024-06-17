@@ -18,11 +18,28 @@ execute:
   warning: false
 ---
 
-```{r}
+```{r setup}
 #| label: load-pkgs
 #| message: false
-library(tidyverse)
-library(lubridate)
+if (!require("pacman")) 
+  install.packages("pacman")
+
+# use this line for installing/loading
+pacman::p_load(tidyverse,
+               lubridate)
+# set width of code output
+options(width = 65)
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  warning = FALSE, 
+  message = FALSE,
+  fig.width = 7,        # 7" width
+  fig.asp = 0.618,      # the golden ratio
+  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300             # higher dpi, sharper image
+)
 ```
 
 ## Dataset
@@ -41,7 +58,7 @@ A brief description of your dataset including its provenance, dimensions, etc. a
 
 Make sure to load the data and use inline code for some of this information.
 
-\# Dataset Description
+## Dataset Description
 
 The dataset contains information on US polling places from 2012 to 2020, including locations, years active, demographic information of precincts, voter turnout, and changes in polling place locations over time. The dataset has rows and columns. It was chosen to analyze trends and factors influencing polling place changes and voter accessibility
 
@@ -57,7 +74,7 @@ Question 2 : How does the availability of polling places vary between urban and 
 
 -   A plan for answering each of the questions including the variables involved, variables to be created (if any), and external data to be merged in (if any).
 
-\# Analysis plan for question 1 :
+### Analysis plan for question 1 :
 
 -   The Variables involved: Independent variable - year (election_date), Dependent Variable: Number of polling places(count), State, Location Type, Location Details (precinct_name).
 
@@ -65,10 +82,27 @@ Question 2 : How does the availability of polling places vary between urban and 
 
 -   Analysis: Plot with years on the x-axis and number of polling places on the y-axis to visualize trends and also analyze changes in polling places across states.
 
-    \# Analysis plan for question 2 :
+### Analysis plan for question 2 :
 
 -   The Variables involved: Independent variable - area type (urban/Rural) , Dependent variable - Number of polling Places(count), state, election_date
 
 -   Preparation of the data: Classifying each polling place as either urban or rural based on its location. Group the data by area type and count the number of unique polling places for each combination of area type, state, and election date.
 
 -   Analysis: Explore the distribution of polling places between urban and rural areas. And then calculate the voter turnout for urban and rural areas and compare them.
+
+#Plan of Attack
+
+```         
+    | Task Name            | Status      | Assignee      | Due  | Priority | Summary/Comments                                      |
+    |----------------------|-------------|---------------|------|----------|-----------------------|
+    | Select Dataset       | Complete    | Luis /Jeevana | 5/28 | High     | Uploaded files to data folder                         |
+    | Proposal             | In Progress | Luis/Jeevana  | 6/3  | High     | Continue updating proposal                            |
+    | Explore Data         | In Progress | Luis/Jeevana  | 6/1  | Moderate | Identify important variables                          |
+    | Create New Variables | In Progress | Luis/Jeevana  | 5/31 | Moderate | Select and review variables by due date.              |
+    | Visualization Draft  | Not Started | Luis/Jeevana  | 6/3  | Moderate | Attempt first visualization                           |
+    | Presentation Draft   | Not Started | Luis/Jeevana  | 6/7  | Moderate | Complete first presentation draft with visualizations |
+    | Website Draft        | Not Started | Luis/Jeevana  | 6/7  | Moderate | Draft Website                                         |
+    | Write Up Draft       | Not Started | Luis/Jeevana  | 6/14 | Moderate | Complete first write-up draft                         |
+    | Final Draft (All)    | No started  | Luis/Jeevana  | 6/21 | High     | Complete documents                                    |
+    | Final Presentation   | Not started | Luis/Jeevana  | 6/24 | High     | Deliver/Submit Presentation, write-up, and website.   |
+```
