@@ -20,9 +20,27 @@ execute:
 #| label: load-packages
 #| include: false
 
-# Load packages here
+if (!require("pacman")) {
+  install.packages("pacman")
+}
+# use this line for installing/loading
+#pacman::p_load() 
 pacman::p_load(tidymodels,
-               tidyverse)
+               tidyverse,
+               readr,
+               dplyr,
+               ggplot2)
+if (!require("devtools")) {
+  install.packages("devtools")
+}
+
+library(tidymodels)
+library(tidyverse)
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+
 
 ```
 
@@ -45,11 +63,11 @@ knitr::opts_chunk$set(
 ```{r}
 #| label: load-data
 #| include: false
-# Load data here
-data(mtcars)
-mtcars$speed <- mtcars$hp / mtcars$wt
 
-data("penguins")
+
+polling_places <- read_csv("data/polling_places.csv")
+
+data("polling_places")
 ```
 
 # Using Quarto for presentations
