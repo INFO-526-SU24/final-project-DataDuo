@@ -136,6 +136,8 @@ ggplot() +
 
 -   The dataset was featured in their September 2020 article titled "National data release sheds light on past polling place changes".
 
+## Data Cleaning and Preparation 
+
 You can use plain text
 
 ::: columns
