@@ -3,38 +3,67 @@ library(dplyr)
 library(ggplot2)
 
 # data cleaning
-polling_places <- read_csv("data/polling_places.csv")
-View(polling_places)
-colnames(polling_places)
-summary(is.na(polling_places))
-polling_places$county_name[is.na(polling_places$county_name)] <- "Unknown"
-polling_places$election_date <- as.Date(polling_places$election_date, format = "%Y-%m-%d")
-polling_places <- unique(polling_places)
-View(polling_places)
-polling_places$year <- lubridate::year(polling_places$election_date)
-# It is already a cleaned data 
+original_dataset <- read_csv("data/original_dataset.csv")
+View(original_dataset)
+colnames(original_dataset)
+summary(is.na(original_dataset))
 
-
-# Question 1
-polling_places_count <- polling_places %>%
-  group_by(year) %>%
-  summarise(num_polling_places = n_distinct(polling_place_id))
-
-ggplot(polling_places_count, aes(x = year, y = num_polling_places)) +
-  geom_line() +
-  labs(x = "Year", y = "Number of Polling Places", title = "Trends in Polling Places Over Time")
+original_dataset$year <- lubridate::year(original_dataset$election_date)
+summary(is.na(original_dataset))
 
 
 
-# Question 2
-polling_places$area_type <- ifelse(grepl("urban", tolower(polling_places$location_type)), "Urban", "Rural")
-polling_places_area <- polling_places %>%
-  group_by(area_type, state, election_date) %>%
-  summarise(num_polling_places = n_distinct(polling_place_id))
 
-ggplot(polling_places_area, aes(x = area_type, y = num_polling_places, fill = area_type)) +
-  geom_bar(stat = "identity") +
-  facet_wrap(~state, scales = "free_y") +
-  labs(x = "Area Type", y = "Number of Polling Places", title = "Distribution of Polling Places by Area Type")
+#calculating polling places
+polling_places_summary <- original_dataset %>%
+  group_by(state, year) %>%
+  summarise(number_of_polling_places = n_distinct(precinct_name))
+print(polling_places_summary)
+
+original_dataset <- merge(original_dataset, polling_places_summary, by = c("state", "year"))
+
+
+classify_area_type <- function(dataset) {
+  dataset$area_type <- ifelse(dataset$location_type %in% c("Urban", "City"), "Urban", "Rural")
+  return(dataset)
+}
+
+original_dataset <- classify_area_type(original_dataset)
+print(original_dataset)
+colnames(original_dataset)
+
+
+
+# adding voter turnout data
+original_dataset$voter_turnout_rate <- rep(65, nrow(original_dataset))  
+original_dataset$voter_turnout_count <- round(original_dataset$number_of_polling_places * 0.65)  
+
+
+summary(original_dataset[c("voter_turnout_rate", "voter_turnout_count")])
+
+
+
+# missing values handling 
+# Here, the location type is most repeated value so I used mode option for this
+
+mode_location_type <- names(sort(table(original_dataset$location_type), decreasing = TRUE))[1]
+original_dataset$location_type[is.na(original_dataset$location_type)] <- mode_location_type
+
+original_dataset$precinct_name[is.na(original_dataset$precinct_name)] <- "Unknown"
+
+
+
+original_dataset$election_date <- as.Date(polling_places$election_date, format = "%Y-%m-%d")
+
+View(original_dataset)
+
+summary(is.na(original_dataset))
+colnames(original_dataset)
+
+
+
+
+
+
 
 
