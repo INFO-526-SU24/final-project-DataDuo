@@ -82,6 +82,12 @@ library(dplyr)
 
 polling_places <- read.csv("data/polling_places.csv")
 
+unique_regions <- unique(map_data$region)
+unique_states <- unique(polling_places$state)
+
+print(unique_regions)
+print(unique_states)
+
 state_name_to_abbr <- c(
   "alabama" = "AL", "arizona" = "AZ", "arkansas" = "AR", "california" = "CA", 
   "colorado" = "CO", "connecticut" = "CT", "delaware" = "DE", 
@@ -100,12 +106,6 @@ state_name_to_abbr <- c(
   "wisconsin" = "WI", "wyoming" = "WY"
 )
 
-
-unique_regions <- unique(map_data$region)
-unique_states <- unique(polling_places$state)
-
-print(unique_regions)
-print(unique_states)
 
 polling_places_summary <- polling_places %>%
   group_by(state) %>%
@@ -130,7 +130,11 @@ ggplot() +
 ``
 ```
 
-## Layouts
+## Data Sources
+
+-   The polling places data used in this presentation originates from " The Center for Public Integrity".
+
+-   The dataset was featured in their September 2020 article titled "National data release sheds light on past polling place changes".
 
 You can use plain text
 
