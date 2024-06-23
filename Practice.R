@@ -53,7 +53,7 @@ original_dataset$precinct_name[is.na(original_dataset$precinct_name)] <- "Unknow
 
 
 
-original_dataset$election_date <- as.Date(polling_places$election_date, format = "%Y-%m-%d")
+original_dataset$election_date <- as.Date(original_dataset$election_date, format = "%Y-%m-%d")
 
 View(original_dataset)
 
