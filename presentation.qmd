@@ -127,7 +127,7 @@ ggplot() +
   theme_minimal() +
   theme(legend.position = "right")
 
-``
+
 ```
 
 ## Data Sources
@@ -136,7 +136,7 @@ ggplot() +
 
 -   The dataset was featured in their September 2020 article titled "National data release sheds light on past polling place changes".
 
-## Data Cleaning and Preparation 
+## Data Cleaning and Preparation
 
 You can use plain text
 
