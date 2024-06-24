@@ -133,9 +133,9 @@ polling_places_state2 <- polling_places |>
 polling_places_state2  |>
   mutate(state = fct_rev(state)) |>
   mutate(state = fct_reorder(state, n)) |>
-  ggplot(aes(state, n)) +
-  geom_point()+
-  facet_wrap(vars(election_date), nrow = 3)
+  ggplot(aes(state, n, colour = election_date)) +
+  geom_jitter()
+
 ```
 
 # Q2 
@@ -144,7 +144,7 @@ polling_places_state2  |>
 
 ```{r}
 
-original_dataset <- read_csv(here("data", "original_dataset.csv"))
+original_dataset <- read_csv(here("data", "updated_polling_places2.csv"))
 
 
 original_dataset <- original_dataset %>%
