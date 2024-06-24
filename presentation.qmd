@@ -29,7 +29,8 @@ pacman::p_load(tidymodels,
                tidyverse,
                readr,
                dplyr,
-               ggplot2)
+               ggplot2,
+               lubridate)
 if (!require("devtools")) {
   install.packages("devtools")
 }
@@ -39,6 +40,7 @@ library(tidyverse)
 library(readr)
 library(dplyr)
 library(ggplot2)
+library(lubridate)
 
 
 
@@ -74,62 +76,6 @@ data("polling_places")
 
 The accessibility of polling places is a critical factor in ensuring that all eligible voters can participate in the democratic process. The availability and distribution of polling places can significantly impact voter turnout and influence the overall effectiveness of an election. This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections.
 
-```{r}
-
-library(ggplot2)
-library(maps)
-library(dplyr)
-
-polling_places <- read.csv("data/polling_places.csv")
-
-unique_regions <- unique(map_data$region)
-unique_states <- unique(polling_places$state)
-
-print(unique_regions)
-print(unique_states)
-
-state_name_to_abbr <- c(
-  "alabama" = "AL", "arizona" = "AZ", "arkansas" = "AR", "california" = "CA", 
-  "colorado" = "CO", "connecticut" = "CT", "delaware" = "DE", 
-  "district of columbia" = "DC", "florida" = "FL", "georgia" = "GA", 
-  "idaho" = "ID", "illinois" = "IL", "indiana" = "IN", "iowa" = "IA", 
-  "kansas" = "KS", "kentucky" = "KY", "louisiana" = "LA", "maine" = "ME", 
-  "maryland" = "MD", "massachusetts" = "MA", "michigan" = "MI", 
-  "minnesota" = "MN", "mississippi" = "MS", "missouri" = "MO", 
-  "montana" = "MT", "nebraska" = "NE", "nevada" = "NV", "new hampshire" = "NH", 
-  "new jersey" = "NJ", "new mexico" = "NM", "new york" = "NY", 
-  "north carolina" = "NC", "north dakota" = "ND", "ohio" = "OH", 
-  "oklahoma" = "OK", "oregon" = "OR", "pennsylvania" = "PA", 
-  "rhode island" = "RI", "south carolina" = "SC", "south dakota" = "SD", 
-  "tennessee" = "TN", "texas" = "TX", "utah" = "UT", "vermont" = "VT", 
-  "virginia" = "VA", "washington" = "WA", "west virginia" = "WV", 
-  "wisconsin" = "WI", "wyoming" = "WY"
-)
-
-
-polling_places_summary <- polling_places %>%
-  group_by(state) %>%
-  summarise(polling_places_count = n())
-
-print(polling_places_summary)
-
-usa <- map_data("state")
-
-map_data <- merge(usa, polling_places_summary, by.x = "region", by.y = "state", all.x = TRUE)
-
-str(map_data)
-
-ggplot() +
-  geom_map(data = map_data, map = map_data,
-           aes(x = long, y = lat, map_id = region, fill = polling_places_count),
-           color = "black", size = 0.2) +
-  labs(title = "Polling Places Distribution by State") +
-  theme_minimal() +
-  theme(legend.position = "right")
-
-``
-```
-
 ## Data Sources
 
 -   The polling places data used in this presentation originates from " The Center for Public Integrity".
@@ -146,52 +92,120 @@ ggplot() +
 
 -   Removed duplicate rows from the dataset.
 
-    ## New columns Added
+## New columns added
 
-    -   **year:** Extracted from `election_date` using `lubridate::year()`.
+-   year: Extracted from election_date using lubridate::year().
 
-    -   **area_type:** Categorized based on `jurisdiction_type` into "urban" or "rural".
+-   area_type: Categorized based on jurisdiction_type into "urban" or "rural".
 
-    -   **number_of_polling_places:** Calculated as the count of distinct `precinct_name` grouped by `state` and `year`.
+-   number_of_polling_places: Categorized based on jurisdiction_type into "urban" or "rural". voter_turnout_rate: Assigned a fixed rate of 65%.
 
-    -   **voter_turnout_rate:** Assigned a fixed rate of 65%.
+-   voter_turnout_count: Calculated as number_of_polling_places multiplied by 0.65.
 
-    -   **voter_turnout_count:** Calculated as `number_of_polling_places` multiplied by 0.65.
+## Questions to answer
 
-::: columns
-::: {.column width="40%"}
--   or bullet points[^1]
-:::
+The two questions we want to answer.
 
-::: {.column width="60%"}
-or in two columns
-:::
-:::
+Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?
 
-[^1]: And add footnotes
-
--   like
-
--   this
+Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?
 
 ## Code
 
-```{r, echo=FALSE}
-model <- lm(mpg ~ speed, data = mtcars) 
+## Question 2
 
-model |> tidy()
+```{r}
 
-model |> glance()
+original_dataset <- read_csv("data/original_dataset.csv")
 
+
+original_dataset <- original_dataset %>%
+  mutate(year = year(election_date))
+
+#calculating polling places
+polling_places_summary <- original_dataset %>%
+  group_by(state, year) %>%
+  summarise(number_of_polling_places = n_distinct(precinct_name))
+
+
+original_dataset <- merge(original_dataset, polling_places_summary, by = c("state", "year"))
+
+na_indices <- which(is.na(original_dataset$jurisdiction_type))
+
+
+original_dataset$jurisdiction_type <- trimws(original_dataset$jurisdiction_type)
+
+
+patterns <- c("Calumet | Town of Harrison", "Marinette | Village of Wausaukee", 
+              "Outagamie | City of Seymour", "Taylor | Town of Medford", 
+              "Adams | Town Of Adams", "Dodge | Village of Lomira", 
+              "Dunn | Town of Tainter", "Eau Claire | Town of Bridge Creek", 
+              "Eau Claire | City of Augusta", "Eau Claire | City of Altoona", 
+              "Iowa | Town of Brigham", "Lafayette | City of Darlington", 
+              "Oneida | Town of Hazelhurst", "Washburn | City of Shell Lake", 
+              "Adams | CITY OF ADAMS")
+
+replacements <- c("town", "village", "city", "town", "town", "village", 
+                  "town", "town", "city", "city", "town", "city", "town", 
+                  "city", "city")
+
+for (i in seq_along(patterns)) {
+  original_dataset$jurisdiction_type[grepl(patterns[i], original_dataset$jurisdiction)] <- replacements[i]
+}
+
+
+
+
+original_dataset$area_type <- ifelse(original_dataset$jurisdiction_type %in% c("borough", "city", "municipality"),
+                                     "urban",
+                                     ifelse(original_dataset$jurisdiction_type %in% c("county", "town", "parish", "county_municipality", "village"),
+                                            "rural", 
+                                            NA ))
+
+
+
+
+original_dataset$voter_turnout_rate <- rep(65, nrow(original_dataset))
+original_dataset$voter_turnout_count <- round(original_dataset$number_of_polling_places * 0.65)
+
+
+
+
+polling_places_area_type <- original_dataset %>%
+  group_by(area_type, state, year) %>%
+  summarise(number_of_polling_places = n_distinct(precinct_name))
+
+
+ggplot(polling_places_area_type, aes(x=area_type, y=number_of_polling_places, fill=area_type)) +
+  geom_bar(stat="identity", position="dodge") +
+  facet_wrap(~year) +
+  ggtitle("Distribution of Polling Places (Urban vs Rural)") +
+  xlab("Area Type") +
+  ylab("Number of Polling Places")
+
+
+voter_turnout_comparison <- original_dataset %>%
+  group_by(area_type) %>%
+  summarise(average_turnout = mean(voter_turnout_rate, na.rm=TRUE))
+
+
+ggplot(voter_turnout_comparison, aes(x=area_type, y=average_turnout, fill=area_type)) +
+  geom_bar(stat="identity", position="dodge") +
+  ggtitle("Voter Turnout Rate Comparison (Urban vs Rural)") +
+  xlab("Area Type") +
+  ylab("Average Voter Turnout Rate")
+
+
+
+```
+
+```         
+{r}
 ```
 
 ## Plots
 
-```{r}
-penguins |>
-  mutate(species = ifelse(species == "Adelie", "Adelie", "Other")) |>
-  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
-  geom_point()
+```         
 ```
 
 ## Plot and text
@@ -204,13 +218,7 @@ penguins |>
 :::
 
 ::: {.column width="50%"}
-```{r, warning=FALSE, fig.width=5.5}
-penguins |>
-  ggplot(aes(x = bill_length_mm, y = species, color = species)) +
-  geom_boxplot(linewidth = 0.75,
-               outlier.size = 2.5) +
-  theme_minimal(base_size = 15) +
-  theme(legend.key.size = unit(0.8, "cm"))
+```         
 ```
 :::
 :::
@@ -221,11 +229,7 @@ penguins |>
 
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
-```{r}
-penguins |> 
-  head() |>
-  kableExtra::kable() |>
-  kableExtra::kable_styling()
+```         
 ```
 
 ## Images

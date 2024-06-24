@@ -64,7 +64,7 @@ The dataset contains information on US polling places from 2012 to 2020, includi
 
 ## Questions
 
-The two questions you want to answer.
+The two questions we want to answer.
 
 Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?
 
