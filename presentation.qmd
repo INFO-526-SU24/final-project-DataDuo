@@ -30,7 +30,9 @@ pacman::p_load(tidymodels,
                readr,
                dplyr,
                ggplot2,
-               lubridate)
+               lubridate,
+               here)
+
 if (!require("devtools")) {
   install.packages("devtools")
 }
@@ -41,6 +43,7 @@ library(readr)
 library(dplyr)
 library(ggplot2)
 library(lubridate)
+library(here)
 
 
 
@@ -57,6 +60,7 @@ ggplot2::theme_set(ggplot2::theme_minimal(base_size = 11))
 knitr::opts_chunk$set(
   fig.retina = 3, 
   dpi = 300, 
+  fig.height= 500,
   fig.width = 6, 
   fig.asp = 0.618 
   )
@@ -75,6 +79,9 @@ data("polling_places")
 ## Introduction
 
 The accessibility of polling places is a critical factor in ensuring that all eligible voters can participate in the democratic process. The availability and distribution of polling places can significantly impact voter turnout and influence the overall effectiveness of an election. This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections.
+
+<<<<<<< HEAD
+=======
 
 ## Data Sources
 
@@ -98,7 +105,8 @@ The accessibility of polling places is a critical factor in ensuring that all el
 
 -   area_type: Categorized based on jurisdiction_type into "urban" or "rural".
 
--   number_of_polling_places: Categorized based on jurisdiction_type into "urban" or "rural". voter_turnout_rate: Assigned a fixed rate of 65%.
+-   number_of_polling_places: Categorized based on jurisdiction_type into "urban" or "rural". 
+-   voter_turnout_rate: Assigned a fixed rate of 65%.
 
 -   voter_turnout_count: Calculated as number_of_polling_places multiplied by 0.65.
 
@@ -110,7 +118,34 @@ Question 1 : What are the trends in the number of polling places over time, both
 
 Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?
 
-## Code
+
+
+## Question 1
+
+```{r}
+
+polling_places <- readr::read_csv(here("data", "updated_polling_places2.csv"))
+
+polling_places_trends <- polling_places %>%
+  group_by(election_date, state) %>%
+  count(group) %>%
+  summarise(number_of_polling_places =n())
+
+
+ggplot(polling_places_trends, aes(x=election_date, y=number_of_polling_places, color=state)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~state) +
+  ggtitle("Number of Polling Places Over Time (By State)") +
+  scale_x_date(date_labels = "%y")+
+  xlab("Year") +
+  ylab("Number of Polling Places")+
+  theme(
+    legend.position = "none"
+  )
+
+
+```
 
 ## Question 2
 
@@ -184,6 +219,11 @@ ggplot(polling_places_area_type, aes(x=area_type, y=number_of_polling_places, fi
   ylab("Number of Polling Places")
 
 
+```
+## Voter Turnout Rate Comparison
+
+```{r}
+
 voter_turnout_comparison <- original_dataset %>%
   group_by(area_type) %>%
   summarise(average_turnout = mean(voter_turnout_rate, na.rm=TRUE))
@@ -196,12 +236,8 @@ ggplot(voter_turnout_comparison, aes(x=area_type, y=average_turnout, fill=area_t
   ylab("Average Voter Turnout Rate")
 
 
-
-```
-
 ```         
-{r}
-```
+
 
 ## Plots
 
