@@ -58,49 +58,49 @@
   {
     "objectID": "presentation.html#code",
     "href": "presentation.html#code",
-    "title": "Project title",
+    "title": "Final Project Presentation",
     "section": "Code",
-    "text": "Code\n\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic       p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1 (Intercept)   25.3      3.08        8.22 0.00000000358\n2 speed         -0.116    0.0642     -1.81 0.0806       \n\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1    0.0983        0.0682  5.82      3.27  0.0806     1  -101.  207.  212.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;"
+    "text": "Code"
   },
   {
     "objectID": "presentation.html#plots",
     "href": "presentation.html#plots",
-    "title": "Project title",
+    "title": "Final Project Presentation",
     "section": "Plots",
     "text": "Plots"
   },
   {
     "objectID": "presentation.html#plot-and-text",
     "href": "presentation.html#plot-and-text",
-    "title": "Project title",
+    "title": "Final Project Presentation",
     "section": "Plot and text",
     "text": "Plot and text\n\n\n\nSome text\ngoes here"
   },
   {
     "objectID": "presentation.html#tables",
     "href": "presentation.html#tables",
-    "title": "Project title",
+    "title": "Final Project Presentation",
     "section": "Tables",
-    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale"
+    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n2007\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n2007\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale\n2007"
   },
   {
     "objectID": "presentation.html#images",
     "href": "presentation.html#images",
-    "title": "Project title",
+    "title": "Final Project Presentation",
     "section": "Images",
     "text": "Images\n\nImage credit: Danielle Navarro, Percolate."
   },
   {
     "objectID": "presentation.html#math-expressions",
     "href": "presentation.html#math-expressions",
-    "title": "Project title",
+    "title": "Final Project Presentation",
     "section": "Math Expressions",
     "text": "Math Expressions\nYou can write LaTeX math expressions inside a pair of dollar signs, e.g. $\\alpha+\\beta$ renders \\(\\alpha + \\beta\\). You can use the display style with double dollar signs:\n$$\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i$$\n\\[\n\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i\n\\]\nLimitations:\n\nThe source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting $$ must appear in the very beginning of a line, followed immediately by a non-space character, and the ending $$ must be at the end of a line, led by a non-space character;\nThere should not be spaces after the opening $ or before the closing $."
   },
   {
     "objectID": "presentation.html#feeling-adventurous",
     "href": "presentation.html#feeling-adventurous",
-    "title": "Project title",
+    "title": "Final Project Presentation",
     "section": "Feeling adventurous?",
     "text": "Feeling adventurous?\n\nYou are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.\nBut some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs."
   },
@@ -117,5 +117,54 @@
     "title": "US Polling Places 2012-2020",
     "section": "Dataset Description",
     "text": "Dataset Description\nThe dataset contains information on US polling places from 2012 to 2020, including locations, years active, demographic information of precincts, voter turnout, and changes in polling place locations over time. The dataset has rows and columns. It was chosen to analyze trends and factors influencing polling place changes and voter accessibility"
+  },
+  {
+    "objectID": "presentation.html#introduction",
+    "href": "presentation.html#introduction",
+    "title": "Final Project Presentation",
+    "section": "Introduction",
+    "text": "Introduction\nThe accessibility of polling places is a critical factor in ensuring that all eligible voters can participate in the democratic process. The availability and distribution of polling places can significantly impact voter turnout and influence the overall effectiveness of an election. This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections."
+  },
+  {
+    "objectID": "presentation.html#data-sources",
+    "href": "presentation.html#data-sources",
+    "title": "Final Project Presentation",
+    "section": "Data Sources",
+    "text": "Data Sources\n\nThe polling places data used in this presentation originates from ” The Center for Public Integrity”.\nThe dataset was featured in their September 2020 article titled “National data release sheds light on past polling place changes”."
+  },
+  {
+    "objectID": "presentation.html#data-cleaning-and-preparation",
+    "href": "presentation.html#data-cleaning-and-preparation",
+    "title": "Final Project Presentation",
+    "section": "Data Cleaning and Preparation",
+    "text": "Data Cleaning and Preparation\n\nThe dataset was grouped using the “name” column. We created a looping function that uses the stringdist1 function to calculate how similar the surrounding 25 observation (by index) were.\nGrouped observations if they were 90% or more similar to each other.\nResults in true number of polling locations because some locations host multiple precincts.\n\nStringdist citation"
+  },
+  {
+    "objectID": "presentation.html#jeevana-plot",
+    "href": "presentation.html#jeevana-plot",
+    "title": "Final Project Presentation",
+    "section": "Jeevana Plot",
+    "text": "Jeevana Plot"
+  },
+  {
+    "objectID": "presentation.html#luis-plot",
+    "href": "presentation.html#luis-plot",
+    "title": "Final Project Presentation",
+    "section": "Luis’ Plot",
+    "text": "Luis’ Plot"
+  },
+  {
+    "objectID": "presentation.html#jeevanas-plot",
+    "href": "presentation.html#jeevanas-plot",
+    "title": "Final Project Presentation",
+    "section": "Jeevana’s Plot",
+    "text": "Jeevana’s Plot"
+  },
+  {
+    "objectID": "presentation.html#luis-plot-1",
+    "href": "presentation.html#luis-plot-1",
+    "title": "Final Project Presentation",
+    "section": "Luis’ Plot",
+    "text": "Luis’ Plot"
   }
 ]
