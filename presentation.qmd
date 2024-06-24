@@ -136,9 +136,27 @@ ggplot() +
 
 -   The dataset was featured in their September 2020 article titled "National data release sheds light on past polling place changes".
 
-## Data Cleaning and Preparation 
+## Data Cleaning and Preparation
 
-You can use plain text
+-   Transformed `election_date` into Date format using `as.Date()` to ensure uniform date handling across the dataset.
+
+-   Filled missing values in `location_type` by assigning the mode of existing values, ensuring consistency in categorization.
+
+-   Assigned "Unknown" to records with missing `precinct_name` to maintain dataset completeness.
+
+-   Removed duplicate rows from the dataset.
+
+    ## New columns Added
+
+    -   **year:** Extracted from `election_date` using `lubridate::year()`.
+
+    -   **area_type:** Categorized based on `jurisdiction_type` into "urban" or "rural".
+
+    -   **number_of_polling_places:** Calculated as the count of distinct `precinct_name` grouped by `state` and `year`.
+
+    -   **voter_turnout_rate:** Assigned a fixed rate of 65%.
+
+    -   **voter_turnout_count:** Calculated as `number_of_polling_places` multiplied by 0.65.
 
 ::: columns
 ::: {.column width="40%"}
