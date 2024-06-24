@@ -206,7 +206,6 @@ voter_turnout_summary <- original_dataset %>%
     avg_turnout_rate = mean(voter_turnout_count / number_of_polling_places, na.rm = TRUE)
   )
 
-
 ggplot(voter_turnout_summary, aes(x = area_type, y = avg_turnout_rate, fill = area_type)) +
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("Voter Turnout Rate Comparison (Urban vs Rural)") +
