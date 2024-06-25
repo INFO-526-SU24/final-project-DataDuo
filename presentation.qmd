@@ -125,6 +125,7 @@ The two questions we want to answer.
 ```{r, warning=FALSE, fig.width=5.5}
 
 polling_places_state2 <- polling_places |>
+  filter(!is.na(state))|>
   mutate(election_date = ymd(election_date)) |>
   filter(month(election_date) == 11, year(election_date) %in% c("2012","2016","2020"), !(name %in% c("unknown", "Do not use", "No Voters"))) |>
   mutate(state = fct_relevel(state)) |>
@@ -132,25 +133,38 @@ polling_places_state2 <- polling_places |>
   count(group) |>
   summarize(n = n())
 
+states_allthree <- polling_places_state2  |>
+  group_by(state) |>
+  count(state) |> 
+  filter(n == 3)
 
 # graph by state 
 polling_places_state2  |>
-  mutate(state = fct_rev(state)) |>
+  mutate(year = factor(year(election_date))) |>
   mutate(state = fct_reorder(state, n)) |>
-  ggplot(aes(state, n, colour = state)) +
-  geom_point()+
-  facet_wrap(vars(election_date), nrow = 3 )+
+  mutate(year = rev(year)) |>
+  group_by(state) |>
+  filter(all(c("2012", "2016", "2020") %in% year)) |>
+  mutate(total = sum(n)) |>
+  ungroup() |>
+  ggplot(aes(year, n, fill = year)) +
+  geom_col(position = "dodge2") +
+  geom_text(aes(label = n), position = position_stack(vjust = 0.9), size = 2)+
+  facet_wrap(~state, scales = "free")+
+  scale_fill_viridis_d(alpha = .75)+
   labs(
     title = "Number of Polling Places Durign Presidential Election Years", 
     subtitle = "Across Reporting U.S. States", 
     y = "Number of Polling Places",
-    x = "State"
   )+
   theme_minimal(base_size = 10)+
   theme(
-    legend.position = "none",
-    plot.title.position = "plot", 
-    axis.text=element_text(size=5)
+    plot.title.position = "plot",
+    axis.text = element_text(size = 6),
+    panel.grid.major.x = element_blank(), 
+    panel.grid.minor.x = element_blank(), 
+    panel.grid.minor.y = element_blank(), 
+    axis.text.x = element_blank()
   ) 
 ```
 
