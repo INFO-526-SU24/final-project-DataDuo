@@ -121,14 +121,14 @@
   {
     "objectID": "presentation.html#introduction",
     "href": "presentation.html#introduction",
-    "title": "Final Project Presentation",
+    "title": "US Polling Places 2012-2020",
     "section": "Introduction",
-    "text": "Introduction\nThe accessibility of polling places is a critical factor in ensuring that all eligible voters can participate in the democratic process. The availability and distribution of polling places can significantly impact voter turnout and influence the overall effectiveness of an election. This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections."
+    "text": "Introduction\nThis project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections."
   },
   {
     "objectID": "presentation.html#data-sources",
     "href": "presentation.html#data-sources",
-    "title": "Final Project Presentation",
+    "title": "US Polling Places 2012-2020",
     "section": "Data Sources",
     "text": "Data Sources\n\nThe polling places data used in this presentation originates from ” The Center for Public Integrity”.\nThe dataset was featured in their September 2020 article titled “National data release sheds light on past polling place changes”."
   },
@@ -158,7 +158,7 @@
     "href": "presentation.html#jeevanas-plot",
     "title": "Final Project Presentation",
     "section": "Jeevana’s Plot",
-    "text": "Jeevana’s Plot"
+    "text": "Jeevana’s Plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nf"
   },
   {
     "objectID": "presentation.html#luis-plot-1",
@@ -166,5 +166,61 @@
     "title": "Final Project Presentation",
     "section": "Luis’ Plot",
     "text": "Luis’ Plot"
+  },
+  {
+    "objectID": "presentation.html#questions-to-answer",
+    "href": "presentation.html#questions-to-answer",
+    "title": "US Polling Places 2012-2020",
+    "section": "Questions to answer",
+    "text": "Questions to answer\nThe two questions we want to answer.\n\nQuestion 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?\nQuestion 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?"
+  },
+  {
+    "objectID": "presentation.html#question-1",
+    "href": "presentation.html#question-1",
+    "title": "US Polling Places 2012-2020",
+    "section": "Question 1",
+    "text": "Question 1"
+  },
+  {
+    "objectID": "presentation.html#question-1-1",
+    "href": "presentation.html#question-1-1",
+    "title": "Final Project Presentation",
+    "section": "Question 1",
+    "text": "Question 1"
+  },
+  {
+    "objectID": "presentation.html#question-2",
+    "href": "presentation.html#question-2",
+    "title": "US Polling Places 2012-2020",
+    "section": "Question 2",
+    "text": "Question 2"
+  },
+  {
+    "objectID": "presentation.html#question-2-1",
+    "href": "presentation.html#question-2-1",
+    "title": "US Polling Places 2012-2020",
+    "section": "Question 2",
+    "text": "Question 2"
+  },
+  {
+    "objectID": "presentation.html#conclusion",
+    "href": "presentation.html#conclusion",
+    "title": "US Polling Places 2012-2020",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nIn question 1 visualization helps us understand how election logistics, such as polling place distribution, have evolved across states from 2012 to 2020.\nIn question 2, Our analysis reveals a picture of polling place trends across the United States from 2012 to 2020.\nRural areas consistently showed a higher concentration of polling places compared to urban areas.\nSpecifically, rural areas had slightly higher voter turnout rates, on average, by 3 percentage points compared to urban areas."
+  },
+  {
+    "objectID": "presentation.html#limitations",
+    "href": "presentation.html#limitations",
+    "title": "US Polling Places 2012-2020",
+    "section": "Limitations",
+    "text": "Limitations\n\nData Limitations: The dataset used may have inconsistencies or missing data that could affect the accuracy of the analysis.\nAssumed Voter Turnout Rate: The fixed voter turnout rate of 65% is an assumption and may not reflect actual turnout rates in different regions and years."
+  },
+  {
+    "objectID": "presentation.html#acknowledgments",
+    "href": "presentation.html#acknowledgments",
+    "title": "US Polling Places 2012-2020",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\n\nWe would like to express sincere thanks to my professor for their invaluable guidance.\nWe would like to extend our gratitude to The Center for Public Integrity for providing the polling places data."
   }
 ]
