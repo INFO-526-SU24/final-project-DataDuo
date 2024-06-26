@@ -22,3 +22,40 @@ execute:
 This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset that includes information on polling locations, years active, demographic details of precincts, voter turnout, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions.
 
 Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and what impact does this disparity have on voter turnout?
+
+## Introduction 
+
+
+
+## Question 1
+
+### Intro
+
+### Approach
+
+### Analysis 
+
+```{r}
+
+```
+
+
+### Discussion
+
+## Question 2
+
+### Intro
+
+### Approach
+
+
+### Analysis 
+
+```{r}
+
+```
+
+
+### Discussion
+
+
