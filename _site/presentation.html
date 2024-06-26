@@ -8,17 +8,10 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-<<<<<<< HEAD
   <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="DataDuo">
   <title>Project Title - US Polling Places 2012-2020</title>
-=======
-  <meta name="generator" content="quarto-1.4.555">
-
-  <meta name="author" content="DataDuo">
-  <title>Project Title - Final Project Presentation</title>
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -333,13 +326,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="images/watercolour_sys02_img34_teacup-ocean.jpg" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-<<<<<<< HEAD
   <h1 class="title">US Polling Places 2012-2020</h1>
   <p class="subtitle">Tracking Changes in US Polling Places from 2012 to 2020</p>
-=======
-  <h1 class="title">Final Project Presentation</h1>
-  <p class="subtitle">INFO 526 - Summer 2024 - Final Project</p>
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -352,46 +340,71 @@ DataDuo
 </section>
 <section id="introduction" class="slide level2">
 <h2>Introduction</h2>
-<<<<<<< HEAD
 <p>This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections.</p>
-<p>=======</p>
-=======
-<p>The accessibility of polling places is a critical factor in ensuring that all eligible voters can participate in the democratic process. The availability and distribution of polling places can significantly impact voter turnout and influence the overall effectiveness of an election. This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections.</p>
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
 </section>
 <section id="data-sources" class="slide level2">
 <h2>Data Sources</h2>
 <ul>
-<li><p>The polling places data used in this presentation originates from ” The Center for Public Integrity”.</p></li>
+<li><p>The polling places data used in this presentation originates from “The Center for Public Integrity”.</p></li>
 <li><p>The dataset was featured in their September 2020 article titled “National data release sheds light on past polling place changes”.</p></li>
 </ul>
 </section>
-<<<<<<< HEAD
 <section id="questions-to-answer" class="slide level2">
 <h2>Questions to answer</h2>
 <p>The two questions we want to answer.</p>
-<p>Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?</p>
-<p>Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?</p>
+<ul>
+<li><p><strong>Question 1</strong>: What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?</p></li>
+<li><p><strong>Question 2</strong>: How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?</p></li>
+</ul>
 </section>
-<section id="question-1" class="slide level2">
-<h2>Question 1</h2>
+<section id="question-1-jeevana-plot" class="slide level2">
+<h2>Question 1 (Jeevana plot)</h2>
 
 <img data-src="presentation_files/figure-revealjs/unnamed-chunk-4-1.png" width="1800" class="r-stretch"></section>
-<section id="question-2" class="slide level2">
-<h2>Question 2</h2>
+<section id="question-2-luiss-plot" class="slide level2">
+<h2>Question 2 (Luis’s Plot)</h2>
+<ul>
+<li>Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?</li>
+</ul>
+<!-- ## Question 1 -->
+<!-- ```{r} -->
+<!-- polling_places_trends <- polling_places %>% -->
+<!--   group_by(election_date, state) %>% -->
+<!--   count(group) %>% -->
+<!--   summarise(number_of_polling_places =n()) -->
+<!-- ggplot(polling_places_trends, aes(x=election_date, y=number_of_polling_places, color=state)) + -->
+<!--   geom_line() + -->
+<!--   geom_point() + -->
+<!--   facet_wrap(~state) + -->
+<!--   ggtitle("Number of Polling Places Over Time (By State)") + -->
+<!--   scale_x_date(date_labels = "%y")+ -->
+<!--   xlab("Year") + -->
+<!--   ylab("Number of Polling Places")+ -->
+<!--   theme( -->
+<!--     legend.position = "none", -->
+<!--     axis.text=element_text(size=5) -->
+<!--   ) -->
+<!-- ``` -->
+</section>
+<section id="question-1-luiss-plot" class="slide level2">
+<h2>Question 1 (Luis’s Plot)</h2>
 
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-5-1.png" width="1800" class="r-stretch"></section>
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-5-1.png" width="1650" class="r-stretch"></section>
+<section id="question-2-jeevana-plot" class="slide level2">
+<h2>Question 2 (Jeevana Plot)</h2>
+
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-6-1.png" width="1800" class="r-stretch"></section>
 <section id="voter-turnout-rate-comparison" class="slide level2">
 <h2>Voter Turnout Rate Comparison</h2>
 
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-6-1.png" width="1800" class="r-stretch"></section>
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-7-1.png" width="1800" class="r-stretch"></section>
 <section id="conclusion" class="slide level2">
 <h2>Conclusion</h2>
 <ul>
-<li><p>In question 1 visualization helps us understand how election logistics, such as polling place distribution, have evolved across states from 2012 to 2020.</p></li>
-<li><p>In question 2, Our analysis reveals a picture of polling place trends across the United States from 2012 to 2020.</p></li>
-<li><p>Rural areas consistently showed a higher concentration of polling places compared to urban areas.</p></li>
-<li><p>Specifically, rural areas had slightly higher voter turnout rates, on average, by 3 percentage points compared to urban areas.</p></li>
+<li>In question 1 visualization helps us understand how election logistics, such as polling place distribution, have evolved across states from 2012 to 2020.</li>
+<li>In question 2, Our analysis reveals a picture of polling place trends across the United States from 2012 to 2020.</li>
+<li>Rural areas consistently showed a higher concentration of polling places compared to urban areas.</li>
+<li>Specifically, rural areas had slightly higher voter turnout rates, on average, by 3 percentage points compared to urban areas.</li>
 </ul>
 </section>
 <section id="limitations" class="slide level2">
@@ -404,55 +417,16 @@ DataDuo
 <section id="acknowledgments" class="slide level2">
 <h2>Acknowledgments</h2>
 <ul>
-<li><p>We would like to express sincere thanks to my professor for their invaluable guidance.</p></li>
-<li><p>We would like to extend our gratitude to The Center for Public Integrity for providing the polling places data.</p></li>
+<li>We would like to express sincere thanks to my professor for their invaluable guidance.</li>
+<li>We would like to extend our gratitude to The Center for Public Integrity for providing the polling places data.</li>
 </ul>
-=======
-<section id="data-cleaning-and-preparation" class="slide level2">
-<h2>Data Cleaning and Preparation</h2>
-<ul>
-<li>The dataset was grouped using the “name” column. We created a looping function that uses the stringdist<sup>1</sup> function to calculate how similar the surrounding 25 observation (by index) were.</li>
-<li>Grouped observations if they were 90% or more similar to each other.</li>
-<li>Results in true number of polling locations because some locations host multiple precincts.</li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Stringdist citation</p></li></ol></aside></section>
-<section>
-<section id="question-1" class="title-slide slide level1 center">
-<h1>Question 1</h1>
-
-</section>
-<section id="jeevana-plot" class="slide level2">
-<h2>Jeevana Plot</h2>
-
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-4-1.png" width="1800" class="r-stretch"></section>
-<section id="luis-plot" class="slide level2">
-<h2>Luis’ Plot</h2>
-
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-5-1.png" width="1650" class="r-stretch"></section></section>
-<section>
-<section id="q2" class="title-slide slide level1 center">
-<h1>Q2</h1>
-
-</section>
-<section id="jeevanas-plot" class="slide level2">
-<h2>Jeevana’s Plot</h2>
-
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-6-1.png" width="1800" class="r-stretch"></section>
-<section id="luis-plot-1" class="slide level2">
-<h2>Luis’ Plot</h2>
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-<<<<<<< HEAD
 </section>
-=======
-</section></section>
-
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
     </div>
   </div>
 

@@ -25,7 +25,7 @@ if (!require("pacman")) {
 }
 # use this line for installing/loading
 #pacman::p_load() 
-<<<<<<< HEAD
+
 pacman::p_load(tidymodels,
                tidyverse,
                readr,
@@ -47,8 +47,6 @@ library(lubridate)
 library(here)
 
 
-
-=======
 pacman::p_load(tidyverse,
                lubridate,
                colorspace,
@@ -69,7 +67,7 @@ pacman::p_load(tidyverse,
                tigris,
                patchwork,
                sf)
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
+
 ```
 
 ```{r}
@@ -100,51 +98,33 @@ polling_places <- readr::read_csv(here("data", "updated_polling_places2.csv"))
 
 ## Introduction
 
-<<<<<<< HEAD
- This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections.
+This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections.
 
 
-=======
-=======
-The accessibility of polling places is a critical factor in ensuring that all eligible voters can participate in the democratic process. The availability and distribution of polling places can significantly impact voter turnout and influence the overall effectiveness of an election. This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections.
-
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
 
 ## Data Sources
 
--   The polling places data used in this presentation originates from " The Center for Public Integrity".
+-   The polling places data used in this presentation originates from "The Center for Public Integrity".
 
 -   The dataset was featured in their September 2020 article titled "National data release sheds light on past polling place changes".
 
 
-<<<<<<< HEAD
 ## Questions to answer
 
 The two questions we want to answer.
 
-Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?
+- **Question 1**: What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?
 
-Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?
+- **Question 2**: How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?
 
 
-## Question 1
+## Question 1 (Jeevana plot)
 
 ```{r}
 
 polling_places <- readr::read_csv(here("data", "updated_polling_places2.csv"))
 
--   The dataset was grouped using the "name" column. We created a looping function that uses the stringdist[^1] function to calculate how similar the surrounding 25 observation (by index) were.
--   Grouped observations if they were 90% or more similar to each other.
--   Results in true number of polling locations because some locations host multiple precincts.
 
-[^1]: Stringdist citation
-
-# Question 1
-
-## Jeevana Plot
-
-```{r}
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
 polling_places_trends <- polling_places %>%
   group_by(election_date, state) %>%
   count(group) %>%
@@ -162,26 +142,45 @@ ggplot(polling_places_trends, aes(x=election_date, y=number_of_polling_places, c
   theme(
     legend.position = "none"
   )
-<<<<<<< HEAD
-
 
 
 ```
 
-## Question 2
 
-```{r}
+## Question 2 (Luis's Plot)
 
-original_dataset <- read_csv("data/original_dataset.csv")
-=======
-```
+- Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?
 
-## Luis' Plot
+<!-- ## Question 1 -->
 
+<!-- ```{r} -->
+<!-- polling_places_trends <- polling_places %>% -->
+<!--   group_by(election_date, state) %>% -->
+<!--   count(group) %>% -->
+<!--   summarise(number_of_polling_places =n()) -->
+
+
+<!-- ggplot(polling_places_trends, aes(x=election_date, y=number_of_polling_places, color=state)) + -->
+<!--   geom_line() + -->
+<!--   geom_point() + -->
+<!--   facet_wrap(~state) + -->
+<!--   ggtitle("Number of Polling Places Over Time (By State)") + -->
+<!--   scale_x_date(date_labels = "%y")+ -->
+<!--   xlab("Year") + -->
+<!--   ylab("Number of Polling Places")+ -->
+<!--   theme( -->
+<!--     legend.position = "none", -->
+<!--     axis.text=element_text(size=5) -->
+<!--   ) -->
+<!-- ``` -->
+
+
+## Question 1 (Luis's Plot)
 
 ```{r, warning=FALSE, fig.width=5.5}
 
 polling_places_state2 <- polling_places |>
+  filter(!is.na(state))|>
   mutate(election_date = ymd(election_date)) |>
   filter(month(election_date) == 11, year(election_date) %in% c("2012","2016","2020"), !(name %in% c("unknown", "Do not use", "No Voters"))) |>
   mutate(state = fct_relevel(state)) |>
@@ -189,30 +188,56 @@ polling_places_state2 <- polling_places |>
   count(group) |>
   summarize(n = n())
 
+states_allthree <- polling_places_state2  |>
+  group_by(state) |>
+  count(state) |> 
+  filter(n == 3)
 
 # graph by state 
 polling_places_state2  |>
-  mutate(state = fct_rev(state)) |>
+  mutate(year = factor(year(election_date))) |>
   mutate(state = fct_reorder(state, n)) |>
-  ggplot(aes(state, n)) +
-  geom_point()+
-  facet_wrap(vars(election_date), nrow = 3)
+  mutate(year = rev(year)) |>
+  group_by(state) |>
+  filter(all(c("2012", "2016", "2020") %in% year)) |>
+  mutate(total = sum(n)) |>
+  ungroup() |>
+  ggplot(aes(year, n, fill = year)) +
+  geom_col(position = "dodge2") +
+  geom_text(aes(label = n), position = position_stack(vjust = 0.9), size = 2)+
+  facet_wrap(~state, scales = "free")+
+  scale_fill_viridis_d(alpha = .75)+
+  labs(
+    title = "Number of Polling Places Durign Presidential Election Years", 
+    subtitle = "Across Reporting U.S. States", 
+    y = "Number of Polling Places",
+  )+
+  theme_minimal(base_size = 10)+
+  theme(
+    plot.title.position = "plot",
+    axis.text = element_text(size = 6),
+    panel.grid.major.x = element_blank(), 
+    panel.grid.minor.x = element_blank(), 
+    panel.grid.minor.y = element_blank(), 
+    axis.text.x = element_blank()
+  ) 
+
 ```
 
-# Q2 
-
-## Jeevana's Plot
+## Question 2 (Jeevana Plot)
 
 ```{r}
 
 original_dataset <- read_csv(here("data", "original_dataset.csv"))
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
+
+original_dataset <- read_csv(here("data", "updated_polling_places2.csv"))
+
 
 
 original_dataset <- original_dataset %>%
   mutate(year = year(election_date))
 
-#calculating polling places
+
 polling_places_summary <- original_dataset %>%
   group_by(state, year) %>%
   summarise(number_of_polling_places = n_distinct(precinct_name))
@@ -245,7 +270,6 @@ for (i in seq_along(patterns)) {
 
 
 
-
 original_dataset$area_type <- ifelse(original_dataset$jurisdiction_type %in% c("borough", "city", "municipality"),
                                      "urban",
                                      ifelse(original_dataset$jurisdiction_type %in% c("county", "town", "parish", "county_municipality", "village"),
@@ -254,16 +278,6 @@ original_dataset$area_type <- ifelse(original_dataset$jurisdiction_type %in% c("
 
 
 
-
-<<<<<<< HEAD
-=======
-original_dataset$voter_turnout_rate <- rep(65, nrow(original_dataset))
-original_dataset$voter_turnout_count <- round(original_dataset$number_of_polling_places * 0.65)
-
-
-
-
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
 polling_places_area_type <- original_dataset %>%
   group_by(area_type, state, year) %>%
   summarise(number_of_polling_places = n_distinct(precinct_name))
@@ -278,14 +292,16 @@ ggplot(polling_places_area_type, aes(x=area_type, y=number_of_polling_places, fi
 
 
 ```
+
 ## Voter Turnout Rate Comparison
 
-<<<<<<< HEAD
+
 ```{r}
 
+original_dataset$voter_turnout_rate <- rep(65, nrow(original_dataset))
 original_dataset$voter_turnout_count <- round(original_dataset$number_of_polling_places * 0.65)
 
-#calculate average turnout rate by area_type
+
 voter_turnout_summary <- original_dataset %>%
   group_by(area_type) %>%
   summarise(
@@ -302,33 +318,24 @@ ggplot(voter_turnout_summary, aes(x = area_type, y = avg_turnout_rate, fill = ar
 
 ```         
 
-## Conclusion 
+
+
+## Conclusion
 
 -   In question 1 visualization helps us understand how election logistics, such as polling place distribution, have evolved across states from 2012 to 2020.
-
 -  In question 2, Our analysis reveals a picture of polling place trends across the United States from 2012 to 2020.
-
 -   Rural areas consistently showed a higher concentration of polling places compared to urban areas.
-
 -   Specifically, rural areas had slightly higher voter turnout rates, on average, by 3 percentage points compared to urban areas. 
-
 
 ## Limitations
 
 - **Data Limitations**: The dataset used may have inconsistencies or missing data that could affect the accuracy of the analysis.
 - **Assumed Voter Turnout Rate**: The fixed voter turnout rate of 65% is an assumption and may not reflect actual turnout rates in different regions and years.
 
-
 ## Acknowledgments
 
 -   We would like to express sincere thanks to my professor for their invaluable guidance.
-
 -   We would like to extend our gratitude to The Center for Public Integrity for providing the polling places data.
-=======
-
-## Luis' Plot
 
 
 
-
->>>>>>> b3bbb5cc70521ad19c505d1745d3e6de4465d9c3
