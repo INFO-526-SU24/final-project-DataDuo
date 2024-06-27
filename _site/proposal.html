@@ -4873,7 +4873,7 @@ $ source_notes      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code><
 </section>
 <section id="questions" class="level2">
 <h2 class="anchored" data-anchor-id="questions">Questions</h2>
-<p>The two questions you want to answer.</p>
+<p>The two questions we want to answer.</p>
 <p>Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?</p>
 <p>Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?</p>
 </section>
@@ -5581,94 +5581,94 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-18"><a href="#cb9-18"></a><span class="co">  warning: false</span></span>
 <span id="cb9-19"><a href="#cb9-19"></a><span class="co">---</span></span>
 <span id="cb9-20"><a href="#cb9-20"></a></span>
-<span id="cb9-21"><a href="#cb9-21"></a><span class="in">```{r setup}</span></span>
-<span id="cb9-22"><a href="#cb9-22"></a><span class="in">#| label: load-pkgs</span></span>
-<span id="cb9-23"><a href="#cb9-23"></a><span class="in">#| message: false</span></span>
-<span id="cb9-24"><a href="#cb9-24"></a><span class="in">if (!require(&quot;pacman&quot;)) </span></span>
-<span id="cb9-25"><a href="#cb9-25"></a><span class="in">  install.packages(&quot;pacman&quot;)</span></span>
-<span id="cb9-26"><a href="#cb9-26"></a></span>
-<span id="cb9-27"><a href="#cb9-27"></a><span class="in"># use this line for installing/loading</span></span>
-<span id="cb9-28"><a href="#cb9-28"></a><span class="in">pacman::p_load(tidyverse,</span></span>
-<span id="cb9-29"><a href="#cb9-29"></a><span class="in">               lubridate)</span></span>
-<span id="cb9-30"><a href="#cb9-30"></a><span class="in"># set width of code output</span></span>
-<span id="cb9-31"><a href="#cb9-31"></a><span class="in">options(width = 65)</span></span>
-<span id="cb9-32"><a href="#cb9-32"></a></span>
-<span id="cb9-33"><a href="#cb9-33"></a><span class="in"># set figure parameters for knitr</span></span>
-<span id="cb9-34"><a href="#cb9-34"></a><span class="in">knitr::opts_chunk$set(</span></span>
-<span id="cb9-35"><a href="#cb9-35"></a><span class="in">  warning = FALSE, </span></span>
-<span id="cb9-36"><a href="#cb9-36"></a><span class="in">  message = FALSE,</span></span>
-<span id="cb9-37"><a href="#cb9-37"></a><span class="in">  fig.width = 7,        # 7&quot; width</span></span>
-<span id="cb9-38"><a href="#cb9-38"></a><span class="in">  fig.asp = 0.618,      # the golden ratio</span></span>
-<span id="cb9-39"><a href="#cb9-39"></a><span class="in">  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina</span></span>
-<span id="cb9-40"><a href="#cb9-40"></a><span class="in">  fig.align = &quot;center&quot;, # center align figures</span></span>
-<span id="cb9-41"><a href="#cb9-41"></a><span class="in">  dpi = 300             # higher dpi, sharper image</span></span>
-<span id="cb9-42"><a href="#cb9-42"></a><span class="in">)</span></span>
-<span id="cb9-43"><a href="#cb9-43"></a><span class="in">```</span></span>
-<span id="cb9-44"><a href="#cb9-44"></a></span>
-<span id="cb9-45"><a href="#cb9-45"></a><span class="fu">## Dataset</span></span>
+<span id="cb9-23"><a href="#cb9-23"></a><span class="in">```{r}</span></span>
+<span id="cb9-24"><a href="#cb9-24"></a><span class="co">#| label: load-pkgs</span></span>
+<span id="cb9-25"><a href="#cb9-25"></a><span class="co">#| message: false</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;pacman&quot;</span>)) </span>
+<span id="cb9-27"><a href="#cb9-27"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
+<span id="cb9-28"><a href="#cb9-28"></a></span>
+<span id="cb9-29"><a href="#cb9-29"></a><span class="co"># use this line for installing/loading</span></span>
+<span id="cb9-30"><a href="#cb9-30"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
+<span id="cb9-31"><a href="#cb9-31"></a>               lubridate)</span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="co"># set width of code output</span></span>
+<span id="cb9-33"><a href="#cb9-33"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">65</span>)</span>
+<span id="cb9-34"><a href="#cb9-34"></a></span>
+<span id="cb9-35"><a href="#cb9-35"></a><span class="co"># set figure parameters for knitr</span></span>
+<span id="cb9-36"><a href="#cb9-36"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb9-37"><a href="#cb9-37"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb9-38"><a href="#cb9-38"></a>  <span class="at">message =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-39"><a href="#cb9-39"></a>  <span class="at">fig.width =</span> <span class="dv">7</span>,        <span class="co"># 7&quot; width</span></span>
+<span id="cb9-40"><a href="#cb9-40"></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>,      <span class="co"># the golden ratio</span></span>
+<span id="cb9-41"><a href="#cb9-41"></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>,       <span class="co"># dpi multiplier for displaying HTML output on retina</span></span>
+<span id="cb9-42"><a href="#cb9-42"></a>  <span class="at">fig.align =</span> <span class="st">&quot;center&quot;</span>, <span class="co"># center align figures</span></span>
+<span id="cb9-43"><a href="#cb9-43"></a>  <span class="at">dpi =</span> <span class="dv">300</span>             <span class="co"># higher dpi, sharper image</span></span>
+<span id="cb9-44"><a href="#cb9-44"></a>)</span>
+<span id="cb9-45"><a href="#cb9-45"></a><span class="in">```</span></span>
 <span id="cb9-46"><a href="#cb9-46"></a></span>
-<span id="cb9-49"><a href="#cb9-49"></a><span class="in">```{r}</span></span>
-<span id="cb9-50"><a href="#cb9-50"></a><span class="co">#| label: load-dataset</span></span>
-<span id="cb9-51"><a href="#cb9-51"></a><span class="co">#| message: false</span></span>
-<span id="cb9-52"><a href="#cb9-52"></a>polling_places <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-16/polling_places.csv&#39;</span>)</span>
-<span id="cb9-53"><a href="#cb9-53"></a><span class="fu">glimpse</span>(polling_places)</span>
-<span id="cb9-54"><a href="#cb9-54"></a></span>
-<span id="cb9-55"><a href="#cb9-55"></a><span class="fu">dim</span>(polling_places)</span>
-<span id="cb9-56"><a href="#cb9-56"></a><span class="fu">names</span>(polling_places)</span>
-<span id="cb9-57"><a href="#cb9-57"></a><span class="in">```</span></span>
-<span id="cb9-58"><a href="#cb9-58"></a></span>
-<span id="cb9-59"><a href="#cb9-59"></a>A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.</span>
+<span id="cb9-47"><a href="#cb9-47"></a><span class="fu">## Dataset</span></span>
+<span id="cb9-48"><a href="#cb9-48"></a></span>
+<span id="cb9-51"><a href="#cb9-51"></a><span class="in">```{r}</span></span>
+<span id="cb9-52"><a href="#cb9-52"></a><span class="co">#| label: load-dataset</span></span>
+<span id="cb9-53"><a href="#cb9-53"></a><span class="co">#| message: false</span></span>
+<span id="cb9-54"><a href="#cb9-54"></a>polling_places <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-16/polling_places.csv&#39;</span>)</span>
+<span id="cb9-55"><a href="#cb9-55"></a><span class="fu">glimpse</span>(polling_places)</span>
+<span id="cb9-56"><a href="#cb9-56"></a></span>
+<span id="cb9-57"><a href="#cb9-57"></a><span class="fu">dim</span>(polling_places)</span>
+<span id="cb9-58"><a href="#cb9-58"></a><span class="fu">names</span>(polling_places)</span>
+<span id="cb9-59"><a href="#cb9-59"></a><span class="in">```</span></span>
 <span id="cb9-60"><a href="#cb9-60"></a></span>
-<span id="cb9-61"><a href="#cb9-61"></a>Make sure to load the data and use inline code for some of this information.</span>
+<span id="cb9-61"><a href="#cb9-61"></a>A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.</span>
 <span id="cb9-62"><a href="#cb9-62"></a></span>
-<span id="cb9-63"><a href="#cb9-63"></a><span class="fu">## Dataset Description</span></span>
+<span id="cb9-63"><a href="#cb9-63"></a>Make sure to load the data and use inline code for some of this information.</span>
 <span id="cb9-64"><a href="#cb9-64"></a></span>
-<span id="cb9-65"><a href="#cb9-65"></a>The dataset contains information on US polling places from 2012 to 2020, including locations, years active, demographic information of precincts, voter turnout, and changes in polling place locations over time. The dataset has rows and columns. It was chosen to analyze trends and factors influencing polling place changes and voter accessibility</span>
+<span id="cb9-65"><a href="#cb9-65"></a><span class="fu">## Dataset Description</span></span>
 <span id="cb9-66"><a href="#cb9-66"></a></span>
-<span id="cb9-67"><a href="#cb9-67"></a><span class="fu">## Questions</span></span>
+<span id="cb9-67"><a href="#cb9-67"></a>The dataset contains information on US polling places from 2012 to 2020, including locations, years active, demographic information of precincts, voter turnout, and changes in polling place locations over time. The dataset has rows and columns. It was chosen to analyze trends and factors influencing polling place changes and voter accessibility</span>
 <span id="cb9-68"><a href="#cb9-68"></a></span>
-<span id="cb9-69"><a href="#cb9-69"></a>The two questions you want to answer.</span>
+<span id="cb9-69"><a href="#cb9-69"></a><span class="fu">## Questions</span></span>
 <span id="cb9-70"><a href="#cb9-70"></a></span>
-<span id="cb9-71"><a href="#cb9-71"></a>Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?</span>
+<span id="cb9-71"><a href="#cb9-71"></a>The two questions we want to answer.</span>
 <span id="cb9-72"><a href="#cb9-72"></a></span>
-<span id="cb9-73"><a href="#cb9-73"></a>Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?</span>
+<span id="cb9-73"><a href="#cb9-73"></a>Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?</span>
 <span id="cb9-74"><a href="#cb9-74"></a></span>
-<span id="cb9-75"><a href="#cb9-75"></a><span class="fu">## Analysis plan</span></span>
+<span id="cb9-75"><a href="#cb9-75"></a>Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?</span>
 <span id="cb9-76"><a href="#cb9-76"></a></span>
-<span id="cb9-77"><a href="#cb9-77"></a><span class="ss">-   </span>A plan for answering each of the questions including the variables involved, variables to be created (if any), and external data to be merged in (if any).</span>
+<span id="cb9-77"><a href="#cb9-77"></a><span class="fu">## Analysis plan</span></span>
 <span id="cb9-78"><a href="#cb9-78"></a></span>
-<span id="cb9-79"><a href="#cb9-79"></a><span class="fu">### Analysis plan for question 1 :</span></span>
+<span id="cb9-79"><a href="#cb9-79"></a><span class="ss">-   </span>A plan for answering each of the questions including the variables involved, variables to be created (if any), and external data to be merged in (if any).</span>
 <span id="cb9-80"><a href="#cb9-80"></a></span>
-<span id="cb9-81"><a href="#cb9-81"></a><span class="ss">-   </span>The Variables involved: Independent variable - year (election_date), Dependent Variable: Number of polling places(count), State, Location Type, Location Details (precinct_name).</span>
+<span id="cb9-81"><a href="#cb9-81"></a><span class="fu">### Analysis plan for question 1 :</span></span>
 <span id="cb9-82"><a href="#cb9-82"></a></span>
-<span id="cb9-83"><a href="#cb9-83"></a><span class="ss">-   </span>Preparation of the data: Extract the year from the &quot;election_date&quot; variable to create the &quot;year&quot; variable. And next group the data by year and count the number of unique polling places for each year.</span>
+<span id="cb9-83"><a href="#cb9-83"></a><span class="ss">-   </span>The Variables involved: Independent variable - year (election_date), Dependent Variable: Number of polling places(count), State, Location Type, Location Details (precinct_name).</span>
 <span id="cb9-84"><a href="#cb9-84"></a></span>
-<span id="cb9-85"><a href="#cb9-85"></a><span class="ss">-   </span>Analysis: Plot with years on the x-axis and number of polling places on the y-axis to visualize trends and also analyze changes in polling places across states.</span>
+<span id="cb9-85"><a href="#cb9-85"></a><span class="ss">-   </span>Preparation of the data: Extract the year from the &quot;election_date&quot; variable to create the &quot;year&quot; variable. And next group the data by year and count the number of unique polling places for each year.</span>
 <span id="cb9-86"><a href="#cb9-86"></a></span>
-<span id="cb9-87"><a href="#cb9-87"></a><span class="fu">### Analysis plan for question 2 :</span></span>
+<span id="cb9-87"><a href="#cb9-87"></a><span class="ss">-   </span>Analysis: Plot with years on the x-axis and number of polling places on the y-axis to visualize trends and also analyze changes in polling places across states.</span>
 <span id="cb9-88"><a href="#cb9-88"></a></span>
-<span id="cb9-89"><a href="#cb9-89"></a><span class="ss">-   </span>The Variables involved: Independent variable - area type (urban/Rural) , Dependent variable - Number of polling Places(count), state, election_date</span>
+<span id="cb9-89"><a href="#cb9-89"></a><span class="fu">### Analysis plan for question 2 :</span></span>
 <span id="cb9-90"><a href="#cb9-90"></a></span>
-<span id="cb9-91"><a href="#cb9-91"></a><span class="ss">-   </span>Preparation of the data: Classifying each polling place as either urban or rural based on its location. Group the data by area type and count the number of unique polling places for each combination of area type, state, and election date.</span>
+<span id="cb9-91"><a href="#cb9-91"></a><span class="ss">-   </span>The Variables involved: Independent variable - area type (urban/Rural) , Dependent variable - Number of polling Places(count), state, election_date</span>
 <span id="cb9-92"><a href="#cb9-92"></a></span>
-<span id="cb9-93"><a href="#cb9-93"></a><span class="ss">-   </span>Analysis: Explore the distribution of polling places between urban and rural areas. And then calculate the voter turnout for urban and rural areas and compare them.</span>
+<span id="cb9-93"><a href="#cb9-93"></a><span class="ss">-   </span>Preparation of the data: Classifying each polling place as either urban or rural based on its location. Group the data by area type and count the number of unique polling places for each combination of area type, state, and election date.</span>
 <span id="cb9-94"><a href="#cb9-94"></a></span>
-<span id="cb9-95"><a href="#cb9-95"></a>#Plan of Attack</span>
+<span id="cb9-95"><a href="#cb9-95"></a><span class="ss">-   </span>Analysis: Explore the distribution of polling places between urban and rural areas. And then calculate the voter turnout for urban and rural areas and compare them.</span>
 <span id="cb9-96"><a href="#cb9-96"></a></span>
-<span id="cb9-97"><a href="#cb9-97"></a><span class="in">```         </span></span>
-<span id="cb9-98"><a href="#cb9-98"></a><span class="in">    | Task Name            | Status      | Assignee      | Due  | Priority | Summary/Comments                                      |</span></span>
-<span id="cb9-99"><a href="#cb9-99"></a><span class="in">    |----------------------|-------------|---------------|------|----------|-----------------------|</span></span>
-<span id="cb9-100"><a href="#cb9-100"></a><span class="in">    | Select Dataset       | Complete    | Luis /Jeevana | 5/28 | High     | Uploaded files to data folder                         |</span></span>
-<span id="cb9-101"><a href="#cb9-101"></a><span class="in">    | Proposal             | In Progress | Luis/Jeevana  | 6/3  | High     | Continue updating proposal                            |</span></span>
-<span id="cb9-102"><a href="#cb9-102"></a><span class="in">    | Explore Data         | In Progress | Luis/Jeevana  | 6/1  | Moderate | Identify important variables                          |</span></span>
-<span id="cb9-103"><a href="#cb9-103"></a><span class="in">    | Create New Variables | In Progress | Luis/Jeevana  | 5/31 | Moderate | Select and review variables by due date.              |</span></span>
-<span id="cb9-104"><a href="#cb9-104"></a><span class="in">    | Visualization Draft  | Not Started | Luis/Jeevana  | 6/3  | Moderate | Attempt first visualization                           |</span></span>
-<span id="cb9-105"><a href="#cb9-105"></a><span class="in">    | Presentation Draft   | Not Started | Luis/Jeevana  | 6/7  | Moderate | Complete first presentation draft with visualizations |</span></span>
-<span id="cb9-106"><a href="#cb9-106"></a><span class="in">    | Website Draft        | Not Started | Luis/Jeevana  | 6/7  | Moderate | Draft Website                                         |</span></span>
-<span id="cb9-107"><a href="#cb9-107"></a><span class="in">    | Write Up Draft       | Not Started | Luis/Jeevana  | 6/14 | Moderate | Complete first write-up draft                         |</span></span>
-<span id="cb9-108"><a href="#cb9-108"></a><span class="in">    | Final Draft (All)    | No started  | Luis/Jeevana  | 6/21 | High     | Complete documents                                    |</span></span>
-<span id="cb9-109"><a href="#cb9-109"></a><span class="in">    | Final Presentation   | Not started | Luis/Jeevana  | 6/24 | High     | Deliver/Submit Presentation, write-up, and website.   |</span></span>
-<span id="cb9-110"><a href="#cb9-110"></a><span class="in">```</span></span>
+<span id="cb9-97"><a href="#cb9-97"></a>#Plan of Attack</span>
+<span id="cb9-98"><a href="#cb9-98"></a></span>
+<span id="cb9-99"><a href="#cb9-99"></a><span class="in">```         </span></span>
+<span id="cb9-100"><a href="#cb9-100"></a><span class="in">    | Task Name            | Status      | Assignee      | Due  | Priority | Summary/Comments                                      |</span></span>
+<span id="cb9-101"><a href="#cb9-101"></a><span class="in">    |----------------------|-------------|---------------|------|----------|-----------------------|</span></span>
+<span id="cb9-102"><a href="#cb9-102"></a><span class="in">    | Select Dataset       | Complete    | Luis /Jeevana | 5/28 | High     | Uploaded files to data folder                         |</span></span>
+<span id="cb9-103"><a href="#cb9-103"></a><span class="in">    | Proposal             | In Progress | Luis/Jeevana  | 6/3  | High     | Continue updating proposal                            |</span></span>
+<span id="cb9-104"><a href="#cb9-104"></a><span class="in">    | Explore Data         | In Progress | Luis/Jeevana  | 6/1  | Moderate | Identify important variables                          |</span></span>
+<span id="cb9-105"><a href="#cb9-105"></a><span class="in">    | Create New Variables | In Progress | Luis/Jeevana  | 5/31 | Moderate | Select and review variables by due date.              |</span></span>
+<span id="cb9-106"><a href="#cb9-106"></a><span class="in">    | Visualization Draft  | Not Started | Luis/Jeevana  | 6/3  | Moderate | Attempt first visualization                           |</span></span>
+<span id="cb9-107"><a href="#cb9-107"></a><span class="in">    | Presentation Draft   | Not Started | Luis/Jeevana  | 6/7  | Moderate | Complete first presentation draft with visualizations |</span></span>
+<span id="cb9-108"><a href="#cb9-108"></a><span class="in">    | Website Draft        | Not Started | Luis/Jeevana  | 6/7  | Moderate | Draft Website                                         |</span></span>
+<span id="cb9-109"><a href="#cb9-109"></a><span class="in">    | Write Up Draft       | Not Started | Luis/Jeevana  | 6/14 | Moderate | Complete first write-up draft                         |</span></span>
+<span id="cb9-110"><a href="#cb9-110"></a><span class="in">    | Final Draft (All)    | No started  | Luis/Jeevana  | 6/21 | High     | Complete documents                                    |</span></span>
+<span id="cb9-111"><a href="#cb9-111"></a><span class="in">    | Final Presentation   | Not started | Luis/Jeevana  | 6/24 | High     | Deliver/Submit Presentation, write-up, and website.   |</span></span>
+<span id="cb9-112"><a href="#cb9-112"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

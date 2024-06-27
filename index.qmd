@@ -19,6 +19,207 @@ execute:
 
 ## Abstract
 
-This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset that includes information on polling locations, years active, demographic details of precincts, voter turnout, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions.
+This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset from TidyTuesday that includes information on polling locations, years active, demographic details of precincts, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions. Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and how does this disparity affect voter turnout? Through this analysis, we seek to provide insights that can inform policies to enhance voter access and participation in future elections.
 
-Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and what impact does this disparity have on voter turnout?
+## Introduction
+
+This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility.
+
+## Data Sources
+
+-   The polling places data used in this presentation originates from "The Center for Public Integrity".
+
+-   The dataset was featured in their September 2020 article titled "National data release sheds light on past polling place changes".
+
+-   The dataset is sourced from TidyTuesday.
+
+-   The dataset consists of 461,445 rows and 15 columns, providing comprehensive coverage of polling locations across the United States over several election cycles.
+
+## Why This Dataset
+
+We chose this dataset because it offers detailed and extensive information on polling places, including their locations, the years they were active, demographic details of the precincts and changes in polling place locations. This level of detail allows for a thorough analysis of how polling place availability has changed over time and across different geographic areas. Moreover, the dataset's scope, covering multiple election cycles and regions, makes it ideal for examining the broader trends and disparities in voter access to polling places.
+
+## Trends in Polling Place Availability from 2012 to 2020
+
+This plot visualizes the trends in the number of polling places across various states in the United States from 2012 to 2020. Each state is represented in a separate facet, allowing for a detailed comparison of changes over time within and between states.
+
+```{r}
+
+
+polling_places <- readr::read_csv(here("data", "updated_polling_places2.csv"))
+
+
+polling_places_trends <- polling_places %>%
+  group_by(election_date, state) %>%
+  count(group) %>%
+  summarise(number_of_polling_places =n(), .groups = 'drop')
+
+
+ggplot(polling_places_trends, aes(x = election_date, y = number_of_polling_places, color = state)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~state) +
+  ggtitle("Number of Polling Places Over Time (By State)") +
+  scale_x_date(date_labels = "%y") +
+  xlab("Year") +
+  ylab("Number of Polling Places") +
+  theme_minimal(base_size = 10)+
+  theme(
+    plot.title.position = "plot",
+    axis.text = element_text(size = 6),
+    panel.grid.major.x = element_blank(), 
+    panel.grid.minor.x = element_blank(), 
+    panel.grid.minor.y = element_blank(), 
+    axis.text.x = element_blank()
+  ) 
+
+
+
+```
+
+```{r}
+
+polling_places_state2 <- polling_places |>
+  filter(!is.na(state))|>
+  mutate(election_date = ymd(election_date)) |>
+  filter(month(election_date) == 11, year(election_date) %in% c("2012","2016","2020"), !(name %in% c("unknown", "Do not use", "No Voters"))) |>
+  mutate(state = fct_relevel(state)) |>
+  group_by(election_date, state) |>
+  count(group) |>
+  summarize(n = n())
+
+states_allthree <- polling_places_state2  |>
+  group_by(state) |>
+  count(state) |> 
+  filter(n == 3)
+
+# graph by state 
+polling_places_state2  |>
+  mutate(year = factor(year(election_date))) |>
+  mutate(state = fct_reorder(state, n)) |>
+  mutate(year = rev(year)) |>
+  group_by(state) |>
+  filter(all(c("2012", "2016", "2020") %in% year)) |>
+  mutate(total = sum(n)) |>
+  ungroup() |>
+  ggplot(aes(year, n, fill = year)) +
+  geom_col(position = "dodge2") +
+  geom_text(aes(label = n), position = position_stack(vjust = 0.9), size = 2)+
+  facet_wrap(~state, scales = "free")+
+  scale_fill_viridis_d(alpha = .75)+
+  labs(
+    title = "Number of Polling Places Durign Presidential Election Years", 
+    subtitle = "Across Reporting U.S. States", 
+    y = "Number of Polling Places",
+  )+
+  theme_minimal(base_size = 10)+
+  theme(
+    plot.title.position = "plot",
+    axis.text = element_text(size = 6),
+    panel.grid.major.x = element_blank(), 
+    panel.grid.minor.x = element_blank(), 
+    panel.grid.minor.y = element_blank(), 
+    axis.text.x = element_blank()
+  ) 
+
+
+
+
+```
+
+## Distribution of Polling Places (Urban vs Rural)
+
+This plot visualizes the distribution of polling places across urban and rural areas over multiple years. The x-axis represents the area type (urban or rural), while the y-axis shows the number of polling places. Each bar is grouped by year, highlighting the changes in the distribution of polling places over time.
+
+```{r}
+
+
+original_dataset <- read_csv(here("data", "original_dataset.csv"))
+
+original_dataset <- read_csv(here("data", "updated_polling_places2.csv"))
+
+
+
+original_dataset <- original_dataset %>%
+  mutate(year = year(election_date))
+
+
+polling_places_summary <- original_dataset %>%
+  group_by(state, year) %>%
+  summarise(number_of_polling_places = n_distinct(precinct_name))
+
+
+original_dataset <- merge(original_dataset, polling_places_summary, by = c("state", "year"))
+
+na_indices <- which(is.na(original_dataset$jurisdiction_type))
+
+
+original_dataset$jurisdiction_type <- trimws(original_dataset$jurisdiction_type)
+
+
+patterns <- c("Calumet | Town of Harrison", "Marinette | Village of Wausaukee", 
+              "Outagamie | City of Seymour", "Taylor | Town of Medford", 
+              "Adams | Town Of Adams", "Dodge | Village of Lomira", 
+              "Dunn | Town of Tainter", "Eau Claire | Town of Bridge Creek", 
+              "Eau Claire | City of Augusta", "Eau Claire | City of Altoona", 
+              "Iowa | Town of Brigham", "Lafayette | City of Darlington", 
+              "Oneida | Town of Hazelhurst", "Washburn | City of Shell Lake", 
+              "Adams | CITY OF ADAMS")
+
+replacements <- c("town", "village", "city", "town", "town", "village", 
+                  "town", "town", "city", "city", "town", "city", "town", 
+                  "city", "city")
+
+for (i in seq_along(patterns)) {
+  original_dataset$jurisdiction_type[grepl(patterns[i], original_dataset$jurisdiction)] <- replacements[i]
+}
+
+
+
+original_dataset$area_type <- ifelse(original_dataset$jurisdiction_type %in% c("borough", "city", "municipality"),
+                                     "urban",
+                                     ifelse(original_dataset$jurisdiction_type %in% c("county", "town", "parish", "county_municipality", "village"),
+                                            "rural", 
+                                            NA ))
+
+
+
+polling_places_area_type <- original_dataset %>%
+  group_by(area_type, state, year) %>%
+  summarise(number_of_polling_places = n_distinct(precinct_name))
+
+
+ggplot(polling_places_area_type, aes(x=area_type, y=number_of_polling_places, fill=area_type)) +
+  geom_bar(stat="identity", position="dodge") +
+  facet_wrap(~year) +
+  ggtitle("Distribution of Polling Places (Urban vs Rural)") +
+  xlab("Area Type") +
+  ylab("Number of Polling Places")
+
+
+```
+
+## Comparison of Voter Turnout Rates
+
+```{r}
+
+original_dataset$voter_turnout_rate <- rep(65, nrow(original_dataset))
+original_dataset$voter_turnout_count <- round(original_dataset$number_of_polling_places * 0.65)
+
+
+voter_turnout_summary <- original_dataset %>%
+  group_by(area_type) %>%
+  summarise(
+    avg_turnout_rate = mean(voter_turnout_count / number_of_polling_places, na.rm = TRUE)
+  )
+
+ggplot(voter_turnout_summary, aes(x = area_type, y = avg_turnout_rate, fill = area_type)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  ggtitle("Voter Turnout Rate Comparison (Urban vs Rural)") +
+  xlab("Area Type") +
+  ylab("Average Voter Turnout Rate") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+```

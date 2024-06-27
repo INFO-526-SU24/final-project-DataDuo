@@ -131,17 +131,23 @@ polling_places_trends <- polling_places %>%
   summarise(number_of_polling_places =n())
 
 
-ggplot(polling_places_trends, aes(x=election_date, y=number_of_polling_places, color=state)) +
+ggplot(polling_places_trends, aes(x = election_date, y = number_of_polling_places, color = state)) +
   geom_line() +
   geom_point() +
   facet_wrap(~state) +
   ggtitle("Number of Polling Places Over Time (By State)") +
-  scale_x_date(date_labels = "%y")+
+  scale_x_date(date_labels = "%y") +
   xlab("Year") +
-  ylab("Number of Polling Places")+
+  ylab("Number of Polling Places") +
+  theme_minimal(base_size = 10)+
   theme(
-    legend.position = "none"
-  )
+    plot.title.position = "plot",
+    axis.text = element_text(size = 6),
+    panel.grid.major.x = element_blank(), 
+    panel.grid.minor.x = element_blank(), 
+    panel.grid.minor.y = element_blank(), 
+    axis.text.x = element_blank()
+  ) 
 
 
 ```
@@ -151,28 +157,6 @@ ggplot(polling_places_trends, aes(x=election_date, y=number_of_polling_places, c
 
 - Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?
 
-<!-- ## Question 1 -->
-
-<!-- ```{r} -->
-<!-- polling_places_trends <- polling_places %>% -->
-<!--   group_by(election_date, state) %>% -->
-<!--   count(group) %>% -->
-<!--   summarise(number_of_polling_places =n()) -->
-
-
-<!-- ggplot(polling_places_trends, aes(x=election_date, y=number_of_polling_places, color=state)) + -->
-<!--   geom_line() + -->
-<!--   geom_point() + -->
-<!--   facet_wrap(~state) + -->
-<!--   ggtitle("Number of Polling Places Over Time (By State)") + -->
-<!--   scale_x_date(date_labels = "%y")+ -->
-<!--   xlab("Year") + -->
-<!--   ylab("Number of Polling Places")+ -->
-<!--   theme( -->
-<!--     legend.position = "none", -->
-<!--     axis.text=element_text(size=5) -->
-<!--   ) -->
-<!-- ``` -->
 
 
 ## Question 1 (Luis's Plot)

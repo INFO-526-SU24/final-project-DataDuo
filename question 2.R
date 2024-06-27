@@ -62,6 +62,7 @@ original_dataset$area_type <- ifelse(original_dataset$jurisdiction_type %in% c("
 
 print(unique(original_dataset$area_type))
 
+summary(is.na(original_dataset))
 
 
 original_dataset$voter_turnout_rate <- rep(65, nrow(original_dataset))
