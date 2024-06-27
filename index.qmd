@@ -74,7 +74,6 @@ ggplot(polling_places_trends, aes(x = election_date, y = number_of_polling_place
   ) 
 
 
-
 ```
 
 ```{r}
@@ -223,43 +222,4 @@ ggplot(voter_turnout_summary, aes(x = area_type, y = avg_turnout_rate, fill = ar
 
 
 ```
-=======
-Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and what impact does this disparity have on voter turnout?
 
-## Introduction 
-
-
-
-## Question 1
-
-### Intro
-
-### Approach
-
-### Analysis 
-
-```{r}
-
-```
-
-
-### Discussion
-
-## Question 2
-
-### Intro
-
-### Approach
-
-
-### Analysis 
-
-```{r}
-
-```
-
-
-### Discussion
-
-
->>>>>>> 305b2fe5065ccb3c995e2ac3146d61b464d96274
