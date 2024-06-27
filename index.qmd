@@ -21,6 +21,7 @@ execute:
 
 This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset from TidyTuesday that includes information on polling locations, years active, demographic details of precincts, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions. Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and how does this disparity affect voter turnout? Through this analysis, we seek to provide insights that can inform policies to enhance voter access and participation in future elections.
 
+<<<<<<< HEAD
 ## Introduction
 
 This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility.
@@ -44,7 +45,6 @@ We chose this dataset because it offers detailed and extensive information on po
 This plot visualizes the trends in the number of polling places across various states in the United States from 2012 to 2020. Each state is represented in a separate facet, allowing for a detailed comparison of changes over time within and between states.
 
 ```{r}
-
 
 polling_places <- readr::read_csv(here("data", "updated_polling_places2.csv"))
 
@@ -223,3 +223,43 @@ ggplot(voter_turnout_summary, aes(x = area_type, y = avg_turnout_rate, fill = ar
 
 
 ```
+=======
+Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and what impact does this disparity have on voter turnout?
+
+## Introduction 
+
+
+
+## Question 1
+
+### Intro
+
+### Approach
+
+### Analysis 
+
+```{r}
+
+```
+
+
+### Discussion
+
+## Question 2
+
+### Intro
+
+### Approach
+
+
+### Analysis 
+
+```{r}
+
+```
+
+
+### Discussion
+
+
+>>>>>>> 305b2fe5065ccb3c995e2ac3146d61b464d96274
