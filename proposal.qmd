@@ -21,6 +21,8 @@ execute:
 ```{r}
 #| label: load-pkgs
 #| message: false
+#| include: false
+
 if (!require("pacman")) 
   install.packages("pacman")
 

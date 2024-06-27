@@ -17,11 +17,65 @@ execute:
   echo: false
 ---
 
+```{r}
+
+#| label: load-packages
+#| include: false
+
+if (!require("pacman")) {
+  install.packages("pacman")
+}
+# use this line for installing/loading
+#pacman::p_load() 
+
+pacman::p_load(tidymodels,
+               tidyverse,
+               readr,
+               dplyr,
+               ggplot2,
+               lubridate,
+               here)
+
+if (!require("devtools")) {
+  install.packages("devtools")
+}
+
+library(tidymodels)
+library(tidyverse)
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+library(here)
+
+
+pacman::p_load(tidyverse,
+               lubridate,
+               colorspace,
+               broom,
+               fs,
+               janitor,
+               ggridges,
+               dsbox, 
+               scales,
+               here, 
+               vroom,
+               palmerpenguins,
+               ggthemes,
+               extrafont, 
+               tidytuesdayR, 
+               stringdist, 
+               maps, 
+               tigris,
+               patchwork,
+               sf)
+
+```
 ## Abstract
 
 This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset from TidyTuesday that includes information on polling locations, years active, demographic details of precincts, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions. Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and how does this disparity affect voter turnout? Through this analysis, we seek to provide insights that can inform policies to enhance voter access and participation in future elections.
 
-<<<<<<< HEAD
+
 ## Introduction
 
 This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility.

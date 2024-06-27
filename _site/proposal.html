@@ -4806,56 +4806,19 @@ vertical-align: -.125em;
 </header>
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;pacman&quot;</span>)) </span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># use this line for installing/loading</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
-<span id="cb1-6"><a href="#cb1-6"></a>               lubridate)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># set width of code output</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">65</span>)</span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># set figure parameters for knitr</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb1-12"><a href="#cb1-12"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb1-13"><a href="#cb1-13"></a>  <span class="at">message =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-14"><a href="#cb1-14"></a>  <span class="at">fig.width =</span> <span class="dv">7</span>,        <span class="co"># 7&quot; width</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>,      <span class="co"># the golden ratio</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>,       <span class="co"># dpi multiplier for displaying HTML output on retina</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a>  <span class="at">fig.align =</span> <span class="st">&quot;center&quot;</span>, <span class="co"># center align figures</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a>  <span class="at">dpi =</span> <span class="dv">300</span>             <span class="co"># higher dpi, sharper image</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>polling_places <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-16/polling_places.csv&#39;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">glimpse</span>(polling_places)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 461,445
-Columns: 15
-$ election_date     &lt;date&gt; 2020-11-03, 2020-11-03, 2020-11-03, …
-$ state             &lt;chr&gt; &quot;AL&quot;, &quot;AL&quot;, &quot;AL&quot;, &quot;AL&quot;, &quot;AL&quot;, &quot;AL&quot;, &quot;…
-$ county_name       &lt;chr&gt; &quot;AUTAUGA&quot;, &quot;AUTAUGA&quot;, &quot;AUTAUGA&quot;, &quot;AUT…
-$ jurisdiction      &lt;chr&gt; &quot;AUTAUGA&quot;, &quot;AUTAUGA&quot;, &quot;AUTAUGA&quot;, &quot;AUT…
-$ jurisdiction_type &lt;chr&gt; &quot;county&quot;, &quot;county&quot;, &quot;county&quot;, &quot;county…
-$ precinct_id       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ precinct_name     &lt;chr&gt; &quot;AUTAUGAVILLE VOL FIRE DEPT&quot;, &quot;BILLIN…
-$ polling_place_id  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ location_type     &lt;chr&gt; &quot;election_day&quot;, &quot;election_day&quot;, &quot;elec…
-$ name              &lt;chr&gt; &quot;AUTAUGAVILLE VOL FIRE DEPT&quot;, &quot;BILLIN…
-$ address           &lt;chr&gt; &quot;2610 HIGHWAY 14 W, AUTAUGAVILLE, AL …
-$ notes             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ source            &lt;chr&gt; &quot;ORR&quot;, &quot;ORR&quot;, &quot;ORR&quot;, &quot;ORR&quot;, &quot;ORR&quot;, &quot;O…
-$ source_date       &lt;date&gt; 2020-10-21, 2020-10-21, 2020-10-21, …
-$ source_notes      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">dim</span>(polling_places)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#| label: load-dataset</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#| message: false</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>polling_places <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-16/polling_places.csv&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">dim</span>(polling_places)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 461445     15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">names</span>(polling_places)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">names</span>(polling_places)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] &quot;election_date&quot;     &quot;state&quot;             &quot;county_name&quot;      
  [4] &quot;jurisdiction&quot;      &quot;jurisdiction_type&quot; &quot;precinct_id&quot;      
@@ -5561,114 +5524,116 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
-<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">---</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="an">title:</span><span class="co"> &quot;US Polling Places 2012-2020&quot;</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="an">subtitle:</span><span class="co"> &quot;Tracking Changes in US Polling Places from 2012 to 2020&quot;</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="an">author:</span><span class="co"> </span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">  - name: &quot;DataDuo&quot;</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">    affiliations:</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co">      - name: &quot;School of Information, University of Arizona&quot;</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="an">description:</span><span class="co"> &quot;This project aims to analyze the changes in US polling places over the period from 2012 to 2020, examining trends and shifts in polling location availability at the county level.&quot;</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="an">format:</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">  html:</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="co">    code-tools: true</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a><span class="co">    code-overflow: wrap</span></span>
-<span id="cb9-13"><a href="#cb9-13"></a><span class="co">    code-line-numbers: true</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a><span class="co">    embed-resources: true</span></span>
-<span id="cb9-15"><a href="#cb9-15"></a><span class="an">editor:</span><span class="co"> visual</span></span>
-<span id="cb9-16"><a href="#cb9-16"></a><span class="an">code-annotations:</span><span class="co"> hover</span></span>
-<span id="cb9-17"><a href="#cb9-17"></a><span class="an">execute:</span></span>
-<span id="cb9-18"><a href="#cb9-18"></a><span class="co">  warning: false</span></span>
-<span id="cb9-19"><a href="#cb9-19"></a><span class="co">---</span></span>
-<span id="cb9-20"><a href="#cb9-20"></a></span>
-<span id="cb9-23"><a href="#cb9-23"></a><span class="in">```{r}</span></span>
-<span id="cb9-24"><a href="#cb9-24"></a><span class="co">#| label: load-pkgs</span></span>
-<span id="cb9-25"><a href="#cb9-25"></a><span class="co">#| message: false</span></span>
-<span id="cb9-26"><a href="#cb9-26"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;pacman&quot;</span>)) </span>
-<span id="cb9-27"><a href="#cb9-27"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
-<span id="cb9-28"><a href="#cb9-28"></a></span>
-<span id="cb9-29"><a href="#cb9-29"></a><span class="co"># use this line for installing/loading</span></span>
-<span id="cb9-30"><a href="#cb9-30"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
-<span id="cb9-31"><a href="#cb9-31"></a>               lubridate)</span>
-<span id="cb9-32"><a href="#cb9-32"></a><span class="co"># set width of code output</span></span>
-<span id="cb9-33"><a href="#cb9-33"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">65</span>)</span>
-<span id="cb9-34"><a href="#cb9-34"></a></span>
-<span id="cb9-35"><a href="#cb9-35"></a><span class="co"># set figure parameters for knitr</span></span>
-<span id="cb9-36"><a href="#cb9-36"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb9-37"><a href="#cb9-37"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb9-38"><a href="#cb9-38"></a>  <span class="at">message =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb9-39"><a href="#cb9-39"></a>  <span class="at">fig.width =</span> <span class="dv">7</span>,        <span class="co"># 7&quot; width</span></span>
-<span id="cb9-40"><a href="#cb9-40"></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>,      <span class="co"># the golden ratio</span></span>
-<span id="cb9-41"><a href="#cb9-41"></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>,       <span class="co"># dpi multiplier for displaying HTML output on retina</span></span>
-<span id="cb9-42"><a href="#cb9-42"></a>  <span class="at">fig.align =</span> <span class="st">&quot;center&quot;</span>, <span class="co"># center align figures</span></span>
-<span id="cb9-43"><a href="#cb9-43"></a>  <span class="at">dpi =</span> <span class="dv">300</span>             <span class="co"># higher dpi, sharper image</span></span>
-<span id="cb9-44"><a href="#cb9-44"></a>)</span>
-<span id="cb9-45"><a href="#cb9-45"></a><span class="in">```</span></span>
-<span id="cb9-46"><a href="#cb9-46"></a></span>
-<span id="cb9-47"><a href="#cb9-47"></a><span class="fu">## Dataset</span></span>
-<span id="cb9-48"><a href="#cb9-48"></a></span>
-<span id="cb9-51"><a href="#cb9-51"></a><span class="in">```{r}</span></span>
-<span id="cb9-52"><a href="#cb9-52"></a><span class="co">#| label: load-dataset</span></span>
-<span id="cb9-53"><a href="#cb9-53"></a><span class="co">#| message: false</span></span>
-<span id="cb9-54"><a href="#cb9-54"></a>polling_places <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-16/polling_places.csv&#39;</span>)</span>
-<span id="cb9-55"><a href="#cb9-55"></a><span class="fu">glimpse</span>(polling_places)</span>
-<span id="cb9-56"><a href="#cb9-56"></a></span>
-<span id="cb9-57"><a href="#cb9-57"></a><span class="fu">dim</span>(polling_places)</span>
-<span id="cb9-58"><a href="#cb9-58"></a><span class="fu">names</span>(polling_places)</span>
-<span id="cb9-59"><a href="#cb9-59"></a><span class="in">```</span></span>
-<span id="cb9-60"><a href="#cb9-60"></a></span>
-<span id="cb9-61"><a href="#cb9-61"></a>A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.</span>
-<span id="cb9-62"><a href="#cb9-62"></a></span>
-<span id="cb9-63"><a href="#cb9-63"></a>Make sure to load the data and use inline code for some of this information.</span>
-<span id="cb9-64"><a href="#cb9-64"></a></span>
-<span id="cb9-65"><a href="#cb9-65"></a><span class="fu">## Dataset Description</span></span>
-<span id="cb9-66"><a href="#cb9-66"></a></span>
-<span id="cb9-67"><a href="#cb9-67"></a>The dataset contains information on US polling places from 2012 to 2020, including locations, years active, demographic information of precincts, voter turnout, and changes in polling place locations over time. The dataset has rows and columns. It was chosen to analyze trends and factors influencing polling place changes and voter accessibility</span>
-<span id="cb9-68"><a href="#cb9-68"></a></span>
-<span id="cb9-69"><a href="#cb9-69"></a><span class="fu">## Questions</span></span>
-<span id="cb9-70"><a href="#cb9-70"></a></span>
-<span id="cb9-71"><a href="#cb9-71"></a>The two questions we want to answer.</span>
-<span id="cb9-72"><a href="#cb9-72"></a></span>
-<span id="cb9-73"><a href="#cb9-73"></a>Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?</span>
-<span id="cb9-74"><a href="#cb9-74"></a></span>
-<span id="cb9-75"><a href="#cb9-75"></a>Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?</span>
-<span id="cb9-76"><a href="#cb9-76"></a></span>
-<span id="cb9-77"><a href="#cb9-77"></a><span class="fu">## Analysis plan</span></span>
-<span id="cb9-78"><a href="#cb9-78"></a></span>
-<span id="cb9-79"><a href="#cb9-79"></a><span class="ss">-   </span>A plan for answering each of the questions including the variables involved, variables to be created (if any), and external data to be merged in (if any).</span>
-<span id="cb9-80"><a href="#cb9-80"></a></span>
-<span id="cb9-81"><a href="#cb9-81"></a><span class="fu">### Analysis plan for question 1 :</span></span>
-<span id="cb9-82"><a href="#cb9-82"></a></span>
-<span id="cb9-83"><a href="#cb9-83"></a><span class="ss">-   </span>The Variables involved: Independent variable - year (election_date), Dependent Variable: Number of polling places(count), State, Location Type, Location Details (precinct_name).</span>
-<span id="cb9-84"><a href="#cb9-84"></a></span>
-<span id="cb9-85"><a href="#cb9-85"></a><span class="ss">-   </span>Preparation of the data: Extract the year from the &quot;election_date&quot; variable to create the &quot;year&quot; variable. And next group the data by year and count the number of unique polling places for each year.</span>
-<span id="cb9-86"><a href="#cb9-86"></a></span>
-<span id="cb9-87"><a href="#cb9-87"></a><span class="ss">-   </span>Analysis: Plot with years on the x-axis and number of polling places on the y-axis to visualize trends and also analyze changes in polling places across states.</span>
-<span id="cb9-88"><a href="#cb9-88"></a></span>
-<span id="cb9-89"><a href="#cb9-89"></a><span class="fu">### Analysis plan for question 2 :</span></span>
-<span id="cb9-90"><a href="#cb9-90"></a></span>
-<span id="cb9-91"><a href="#cb9-91"></a><span class="ss">-   </span>The Variables involved: Independent variable - area type (urban/Rural) , Dependent variable - Number of polling Places(count), state, election_date</span>
-<span id="cb9-92"><a href="#cb9-92"></a></span>
-<span id="cb9-93"><a href="#cb9-93"></a><span class="ss">-   </span>Preparation of the data: Classifying each polling place as either urban or rural based on its location. Group the data by area type and count the number of unique polling places for each combination of area type, state, and election date.</span>
-<span id="cb9-94"><a href="#cb9-94"></a></span>
-<span id="cb9-95"><a href="#cb9-95"></a><span class="ss">-   </span>Analysis: Explore the distribution of polling places between urban and rural areas. And then calculate the voter turnout for urban and rural areas and compare them.</span>
-<span id="cb9-96"><a href="#cb9-96"></a></span>
-<span id="cb9-97"><a href="#cb9-97"></a>#Plan of Attack</span>
-<span id="cb9-98"><a href="#cb9-98"></a></span>
-<span id="cb9-99"><a href="#cb9-99"></a><span class="in">```         </span></span>
-<span id="cb9-100"><a href="#cb9-100"></a><span class="in">    | Task Name            | Status      | Assignee      | Due  | Priority | Summary/Comments                                      |</span></span>
-<span id="cb9-101"><a href="#cb9-101"></a><span class="in">    |----------------------|-------------|---------------|------|----------|-----------------------|</span></span>
-<span id="cb9-102"><a href="#cb9-102"></a><span class="in">    | Select Dataset       | Complete    | Luis /Jeevana | 5/28 | High     | Uploaded files to data folder                         |</span></span>
-<span id="cb9-103"><a href="#cb9-103"></a><span class="in">    | Proposal             | In Progress | Luis/Jeevana  | 6/3  | High     | Continue updating proposal                            |</span></span>
-<span id="cb9-104"><a href="#cb9-104"></a><span class="in">    | Explore Data         | In Progress | Luis/Jeevana  | 6/1  | Moderate | Identify important variables                          |</span></span>
-<span id="cb9-105"><a href="#cb9-105"></a><span class="in">    | Create New Variables | In Progress | Luis/Jeevana  | 5/31 | Moderate | Select and review variables by due date.              |</span></span>
-<span id="cb9-106"><a href="#cb9-106"></a><span class="in">    | Visualization Draft  | Not Started | Luis/Jeevana  | 6/3  | Moderate | Attempt first visualization                           |</span></span>
-<span id="cb9-107"><a href="#cb9-107"></a><span class="in">    | Presentation Draft   | Not Started | Luis/Jeevana  | 6/7  | Moderate | Complete first presentation draft with visualizations |</span></span>
-<span id="cb9-108"><a href="#cb9-108"></a><span class="in">    | Website Draft        | Not Started | Luis/Jeevana  | 6/7  | Moderate | Draft Website                                         |</span></span>
-<span id="cb9-109"><a href="#cb9-109"></a><span class="in">    | Write Up Draft       | Not Started | Luis/Jeevana  | 6/14 | Moderate | Complete first write-up draft                         |</span></span>
-<span id="cb9-110"><a href="#cb9-110"></a><span class="in">    | Final Draft (All)    | No started  | Luis/Jeevana  | 6/21 | High     | Complete documents                                    |</span></span>
-<span id="cb9-111"><a href="#cb9-111"></a><span class="in">    | Final Presentation   | Not started | Luis/Jeevana  | 6/24 | High     | Deliver/Submit Presentation, write-up, and website.   |</span></span>
-<span id="cb9-112"><a href="#cb9-112"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="an">title:</span><span class="co"> &quot;US Polling Places 2012-2020&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="an">subtitle:</span><span class="co"> &quot;Tracking Changes in US Polling Places from 2012 to 2020&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="an">author:</span><span class="co"> </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">  - name: &quot;DataDuo&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">    affiliations:</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">      - name: &quot;School of Information, University of Arizona&quot;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="an">description:</span><span class="co"> &quot;This project aims to analyze the changes in US polling places over the period from 2012 to 2020, examining trends and shifts in polling location availability at the county level.&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="an">format:</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">  html:</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">    code-tools: true</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">    code-line-numbers: true</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">    embed-resources: true</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="an">code-annotations:</span><span class="co"> hover</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="an">execute:</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="co">  warning: false</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co">---</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="in">```{r}</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="co">#| label: load-pkgs</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="co">#| message: false</span></span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="co">#| include: false</span></span>
+<span id="cb6-27"><a href="#cb6-27"></a></span>
+<span id="cb6-28"><a href="#cb6-28"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;pacman&quot;</span>)) </span>
+<span id="cb6-29"><a href="#cb6-29"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
+<span id="cb6-30"><a href="#cb6-30"></a></span>
+<span id="cb6-31"><a href="#cb6-31"></a><span class="co"># use this line for installing/loading</span></span>
+<span id="cb6-32"><a href="#cb6-32"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
+<span id="cb6-33"><a href="#cb6-33"></a>               lubridate)</span>
+<span id="cb6-34"><a href="#cb6-34"></a><span class="co"># set width of code output</span></span>
+<span id="cb6-35"><a href="#cb6-35"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">65</span>)</span>
+<span id="cb6-36"><a href="#cb6-36"></a></span>
+<span id="cb6-37"><a href="#cb6-37"></a><span class="co"># set figure parameters for knitr</span></span>
+<span id="cb6-38"><a href="#cb6-38"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb6-39"><a href="#cb6-39"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb6-40"><a href="#cb6-40"></a>  <span class="at">message =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb6-41"><a href="#cb6-41"></a>  <span class="at">fig.width =</span> <span class="dv">7</span>,        <span class="co"># 7&quot; width</span></span>
+<span id="cb6-42"><a href="#cb6-42"></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>,      <span class="co"># the golden ratio</span></span>
+<span id="cb6-43"><a href="#cb6-43"></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>,       <span class="co"># dpi multiplier for displaying HTML output on retina</span></span>
+<span id="cb6-44"><a href="#cb6-44"></a>  <span class="at">fig.align =</span> <span class="st">&quot;center&quot;</span>, <span class="co"># center align figures</span></span>
+<span id="cb6-45"><a href="#cb6-45"></a>  <span class="at">dpi =</span> <span class="dv">300</span>             <span class="co"># higher dpi, sharper image</span></span>
+<span id="cb6-46"><a href="#cb6-46"></a>)</span>
+<span id="cb6-47"><a href="#cb6-47"></a><span class="in">```</span></span>
+<span id="cb6-48"><a href="#cb6-48"></a></span>
+<span id="cb6-49"><a href="#cb6-49"></a><span class="fu">## Dataset</span></span>
+<span id="cb6-50"><a href="#cb6-50"></a></span>
+<span id="cb6-53"><a href="#cb6-53"></a><span class="in">```{r}</span></span>
+<span id="cb6-54"><a href="#cb6-54"></a><span class="co">#| label: load-dataset</span></span>
+<span id="cb6-55"><a href="#cb6-55"></a><span class="co">#| message: false</span></span>
+<span id="cb6-56"><a href="#cb6-56"></a>polling_places <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-16/polling_places.csv&#39;</span>)</span>
+<span id="cb6-57"><a href="#cb6-57"></a></span>
+<span id="cb6-58"><a href="#cb6-58"></a></span>
+<span id="cb6-59"><a href="#cb6-59"></a><span class="fu">dim</span>(polling_places)</span>
+<span id="cb6-60"><a href="#cb6-60"></a><span class="fu">names</span>(polling_places)</span>
+<span id="cb6-61"><a href="#cb6-61"></a><span class="in">```</span></span>
+<span id="cb6-62"><a href="#cb6-62"></a></span>
+<span id="cb6-63"><a href="#cb6-63"></a>A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.</span>
+<span id="cb6-64"><a href="#cb6-64"></a></span>
+<span id="cb6-65"><a href="#cb6-65"></a>Make sure to load the data and use inline code for some of this information.</span>
+<span id="cb6-66"><a href="#cb6-66"></a></span>
+<span id="cb6-67"><a href="#cb6-67"></a><span class="fu">## Dataset Description</span></span>
+<span id="cb6-68"><a href="#cb6-68"></a></span>
+<span id="cb6-69"><a href="#cb6-69"></a>The dataset contains information on US polling places from 2012 to 2020, including locations, years active, demographic information of precincts, voter turnout, and changes in polling place locations over time. The dataset has rows and columns. It was chosen to analyze trends and factors influencing polling place changes and voter accessibility</span>
+<span id="cb6-70"><a href="#cb6-70"></a></span>
+<span id="cb6-71"><a href="#cb6-71"></a><span class="fu">## Questions</span></span>
+<span id="cb6-72"><a href="#cb6-72"></a></span>
+<span id="cb6-73"><a href="#cb6-73"></a>The two questions we want to answer.</span>
+<span id="cb6-74"><a href="#cb6-74"></a></span>
+<span id="cb6-75"><a href="#cb6-75"></a>Question 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?</span>
+<span id="cb6-76"><a href="#cb6-76"></a></span>
+<span id="cb6-77"><a href="#cb6-77"></a>Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?</span>
+<span id="cb6-78"><a href="#cb6-78"></a></span>
+<span id="cb6-79"><a href="#cb6-79"></a><span class="fu">## Analysis plan</span></span>
+<span id="cb6-80"><a href="#cb6-80"></a></span>
+<span id="cb6-81"><a href="#cb6-81"></a><span class="ss">-   </span>A plan for answering each of the questions including the variables involved, variables to be created (if any), and external data to be merged in (if any).</span>
+<span id="cb6-82"><a href="#cb6-82"></a></span>
+<span id="cb6-83"><a href="#cb6-83"></a><span class="fu">### Analysis plan for question 1 :</span></span>
+<span id="cb6-84"><a href="#cb6-84"></a></span>
+<span id="cb6-85"><a href="#cb6-85"></a><span class="ss">-   </span>The Variables involved: Independent variable - year (election_date), Dependent Variable: Number of polling places(count), State, Location Type, Location Details (precinct_name).</span>
+<span id="cb6-86"><a href="#cb6-86"></a></span>
+<span id="cb6-87"><a href="#cb6-87"></a><span class="ss">-   </span>Preparation of the data: Extract the year from the &quot;election_date&quot; variable to create the &quot;year&quot; variable. And next group the data by year and count the number of unique polling places for each year.</span>
+<span id="cb6-88"><a href="#cb6-88"></a></span>
+<span id="cb6-89"><a href="#cb6-89"></a><span class="ss">-   </span>Analysis: Plot with years on the x-axis and number of polling places on the y-axis to visualize trends and also analyze changes in polling places across states.</span>
+<span id="cb6-90"><a href="#cb6-90"></a></span>
+<span id="cb6-91"><a href="#cb6-91"></a><span class="fu">### Analysis plan for question 2 :</span></span>
+<span id="cb6-92"><a href="#cb6-92"></a></span>
+<span id="cb6-93"><a href="#cb6-93"></a><span class="ss">-   </span>The Variables involved: Independent variable - area type (urban/Rural) , Dependent variable - Number of polling Places(count), state, election_date</span>
+<span id="cb6-94"><a href="#cb6-94"></a></span>
+<span id="cb6-95"><a href="#cb6-95"></a><span class="ss">-   </span>Preparation of the data: Classifying each polling place as either urban or rural based on its location. Group the data by area type and count the number of unique polling places for each combination of area type, state, and election date.</span>
+<span id="cb6-96"><a href="#cb6-96"></a></span>
+<span id="cb6-97"><a href="#cb6-97"></a><span class="ss">-   </span>Analysis: Explore the distribution of polling places between urban and rural areas. And then calculate the voter turnout for urban and rural areas and compare them.</span>
+<span id="cb6-98"><a href="#cb6-98"></a></span>
+<span id="cb6-99"><a href="#cb6-99"></a>#Plan of Attack</span>
+<span id="cb6-100"><a href="#cb6-100"></a></span>
+<span id="cb6-101"><a href="#cb6-101"></a><span class="in">```         </span></span>
+<span id="cb6-102"><a href="#cb6-102"></a><span class="in">    | Task Name            | Status      | Assignee      | Due  | Priority | Summary/Comments                                      |</span></span>
+<span id="cb6-103"><a href="#cb6-103"></a><span class="in">    |----------------------|-------------|---------------|------|----------|-----------------------|</span></span>
+<span id="cb6-104"><a href="#cb6-104"></a><span class="in">    | Select Dataset       | Complete    | Luis /Jeevana | 5/28 | High     | Uploaded files to data folder                         |</span></span>
+<span id="cb6-105"><a href="#cb6-105"></a><span class="in">    | Proposal             | In Progress | Luis/Jeevana  | 6/3  | High     | Continue updating proposal                            |</span></span>
+<span id="cb6-106"><a href="#cb6-106"></a><span class="in">    | Explore Data         | In Progress | Luis/Jeevana  | 6/1  | Moderate | Identify important variables                          |</span></span>
+<span id="cb6-107"><a href="#cb6-107"></a><span class="in">    | Create New Variables | In Progress | Luis/Jeevana  | 5/31 | Moderate | Select and review variables by due date.              |</span></span>
+<span id="cb6-108"><a href="#cb6-108"></a><span class="in">    | Visualization Draft  | Not Started | Luis/Jeevana  | 6/3  | Moderate | Attempt first visualization                           |</span></span>
+<span id="cb6-109"><a href="#cb6-109"></a><span class="in">    | Presentation Draft   | Not Started | Luis/Jeevana  | 6/7  | Moderate | Complete first presentation draft with visualizations |</span></span>
+<span id="cb6-110"><a href="#cb6-110"></a><span class="in">    | Website Draft        | Not Started | Luis/Jeevana  | 6/7  | Moderate | Draft Website                                         |</span></span>
+<span id="cb6-111"><a href="#cb6-111"></a><span class="in">    | Write Up Draft       | Not Started | Luis/Jeevana  | 6/14 | Moderate | Complete first write-up draft                         |</span></span>
+<span id="cb6-112"><a href="#cb6-112"></a><span class="in">    | Final Draft (All)    | No started  | Luis/Jeevana  | 6/21 | High     | Complete documents                                    |</span></span>
+<span id="cb6-113"><a href="#cb6-113"></a><span class="in">    | Final Presentation   | Not started | Luis/Jeevana  | 6/24 | High     | Deliver/Submit Presentation, write-up, and website.   |</span></span>
+<span id="cb6-114"><a href="#cb6-114"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
