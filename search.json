@@ -91,13 +91,6 @@
     "text": "Comparison of Voter Turnout Rates"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This project was developed by Data Duo For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nJSD Sathwika: JSD Sathwika first-year , first class graduate student studying Data Science.\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.)."
-  },
-  {
     "objectID": "presentation.html#introduction",
     "href": "presentation.html#introduction",
     "title": "US Polling Places 2012-2020",
@@ -173,5 +166,12 @@
     "title": "US Polling Places 2012-2020",
     "section": "Acknowledgments",
     "text": "Acknowledgments\n\nWe would like to express sincere thanks to my professor for their invaluable guidance.\nWe would like to extend our gratitude to The Center for Public Integrity for providing the polling places data."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by Data Duo For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nJSD Sathwika: JSD Sathwika first-year , first class graduate student studying Data Science.\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.)."
   }
 ]
