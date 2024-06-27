@@ -1,0 +1,177 @@
+[
+  {
+    "objectID": "proposal.html",
+    "href": "proposal.html",
+    "title": "US Polling Places 2012-2020",
+    "section": "",
+    "text": "#| label: load-dataset\n#| message: false\npolling_places &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-16/polling_places.csv')\n\n\ndim(polling_places)\n\n[1] 461445     15\n\nnames(polling_places)\n\n [1] \"election_date\"     \"state\"             \"county_name\"      \n [4] \"jurisdiction\"      \"jurisdiction_type\" \"precinct_id\"      \n [7] \"precinct_name\"     \"polling_place_id\"  \"location_type\"    \n[10] \"name\"              \"address\"           \"notes\"            \n[13] \"source\"            \"source_date\"       \"source_notes\"     \n\n\nA brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.\nMake sure to load the data and use inline code for some of this information."
+  },
+  {
+    "objectID": "proposal.html#dataset",
+    "href": "proposal.html#dataset",
+    "title": "US Polling Places 2012-2020",
+    "section": "",
+    "text": "#| label: load-dataset\n#| message: false\npolling_places &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-16/polling_places.csv')\n\n\ndim(polling_places)\n\n[1] 461445     15\n\nnames(polling_places)\n\n [1] \"election_date\"     \"state\"             \"county_name\"      \n [4] \"jurisdiction\"      \"jurisdiction_type\" \"precinct_id\"      \n [7] \"precinct_name\"     \"polling_place_id\"  \"location_type\"    \n[10] \"name\"              \"address\"           \"notes\"            \n[13] \"source\"            \"source_date\"       \"source_notes\"     \n\n\nA brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.\nMake sure to load the data and use inline code for some of this information."
+  },
+  {
+    "objectID": "proposal.html#dataset-description",
+    "href": "proposal.html#dataset-description",
+    "title": "US Polling Places 2012-2020",
+    "section": "Dataset Description",
+    "text": "Dataset Description\nThe dataset contains information on US polling places from 2012 to 2020, including locations, years active, demographic information of precincts, voter turnout, and changes in polling place locations over time. The dataset has rows and columns. It was chosen to analyze trends and factors influencing polling place changes and voter accessibility"
+  },
+  {
+    "objectID": "proposal.html#questions",
+    "href": "proposal.html#questions",
+    "title": "US Polling Places 2012-2020",
+    "section": "Questions",
+    "text": "Questions\nThe two questions we want to answer.\nQuestion 1 : What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?\nQuestion 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?"
+  },
+  {
+    "objectID": "proposal.html#analysis-plan",
+    "href": "proposal.html#analysis-plan",
+    "title": "US Polling Places 2012-2020",
+    "section": "Analysis plan",
+    "text": "Analysis plan\n\nA plan for answering each of the questions including the variables involved, variables to be created (if any), and external data to be merged in (if any).\n\n\nAnalysis plan for question 1 :\n\nThe Variables involved: Independent variable - year (election_date), Dependent Variable: Number of polling places(count), State, Location Type, Location Details (precinct_name).\nPreparation of the data: Extract the year from the “election_date” variable to create the “year” variable. And next group the data by year and count the number of unique polling places for each year.\nAnalysis: Plot with years on the x-axis and number of polling places on the y-axis to visualize trends and also analyze changes in polling places across states.\n\n\n\nAnalysis plan for question 2 :\n\nThe Variables involved: Independent variable - area type (urban/Rural) , Dependent variable - Number of polling Places(count), state, election_date\nPreparation of the data: Classifying each polling place as either urban or rural based on its location. Group the data by area type and count the number of unique polling places for each combination of area type, state, and election date.\nAnalysis: Explore the distribution of polling places between urban and rural areas. And then calculate the voter turnout for urban and rural areas and compare them.\n\n#Plan of Attack\n    | Task Name            | Status      | Assignee      | Due  | Priority | Summary/Comments                                      |\n    |----------------------|-------------|---------------|------|----------|-----------------------|\n    | Select Dataset       | Complete    | Luis /Jeevana | 5/28 | High     | Uploaded files to data folder                         |\n    | Proposal             | In Progress | Luis/Jeevana  | 6/3  | High     | Continue updating proposal                            |\n    | Explore Data         | In Progress | Luis/Jeevana  | 6/1  | Moderate | Identify important variables                          |\n    | Create New Variables | In Progress | Luis/Jeevana  | 5/31 | Moderate | Select and review variables by due date.              |\n    | Visualization Draft  | Not Started | Luis/Jeevana  | 6/3  | Moderate | Attempt first visualization                           |\n    | Presentation Draft   | Not Started | Luis/Jeevana  | 6/7  | Moderate | Complete first presentation draft with visualizations |\n    | Website Draft        | Not Started | Luis/Jeevana  | 6/7  | Moderate | Draft Website                                         |\n    | Write Up Draft       | Not Started | Luis/Jeevana  | 6/14 | Moderate | Complete first write-up draft                         |\n    | Final Draft (All)    | No started  | Luis/Jeevana  | 6/21 | High     | Complete documents                                    |\n    | Final Presentation   | Not started | Luis/Jeevana  | 6/24 | High     | Deliver/Submit Presentation, write-up, and website.   |"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "US Polling Places 2012-2020",
+    "section": "",
+    "text": "This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset from TidyTuesday that includes information on polling locations, years active, demographic details of precincts, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions. Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and how does this disparity affect voter turnout? Through this analysis, we seek to provide insights that can inform policies to enhance voter access and participation in future elections."
+  },
+  {
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
+    "title": "US Polling Places 2012-2020",
+    "section": "",
+    "text": "This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset from TidyTuesday that includes information on polling locations, years active, demographic details of precincts, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions. Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and how does this disparity affect voter turnout? Through this analysis, we seek to provide insights that can inform policies to enhance voter access and participation in future elections."
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "US Polling Places 2012-2020",
+    "section": "Introduction",
+    "text": "Introduction\nThis project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility."
+  },
+  {
+    "objectID": "index.html#data-sources",
+    "href": "index.html#data-sources",
+    "title": "US Polling Places 2012-2020",
+    "section": "Data Sources",
+    "text": "Data Sources\n\nThe polling places data used in this presentation originates from “The Center for Public Integrity”.\nThe dataset was featured in their September 2020 article titled “National data release sheds light on past polling place changes”.\nThe dataset is sourced from TidyTuesday.\nThe dataset consists of 461,445 rows and 15 columns, providing comprehensive coverage of polling locations across the United States over several election cycles."
+  },
+  {
+    "objectID": "index.html#why-this-dataset",
+    "href": "index.html#why-this-dataset",
+    "title": "US Polling Places 2012-2020",
+    "section": "Why This Dataset",
+    "text": "Why This Dataset\nWe chose this dataset because it offers detailed and extensive information on polling places, including their locations, the years they were active, demographic details of the precincts and changes in polling place locations. This level of detail allows for a thorough analysis of how polling place availability has changed over time and across different geographic areas. Moreover, the dataset’s scope, covering multiple election cycles and regions, makes it ideal for examining the broader trends and disparities in voter access to polling places."
+  },
+  {
+    "objectID": "index.html#trends-in-polling-place-availability-from-2012-to-2020",
+    "href": "index.html#trends-in-polling-place-availability-from-2012-to-2020",
+    "title": "US Polling Places 2012-2020",
+    "section": "Trends in Polling Place Availability from 2012 to 2020",
+    "text": "Trends in Polling Place Availability from 2012 to 2020\nThis plot visualizes the trends in the number of polling places across various states in the United States from 2012 to 2020. Each state is represented in a separate facet, allowing for a detailed comparison of changes over time within and between states."
+  },
+  {
+    "objectID": "index.html#distribution-of-polling-places-urban-vs-rural",
+    "href": "index.html#distribution-of-polling-places-urban-vs-rural",
+    "title": "US Polling Places 2012-2020",
+    "section": "Distribution of Polling Places (Urban vs Rural)",
+    "text": "Distribution of Polling Places (Urban vs Rural)\nThis plot visualizes the distribution of polling places across urban and rural areas over multiple years. The x-axis represents the area type (urban or rural), while the y-axis shows the number of polling places. Each bar is grouped by year, highlighting the changes in the distribution of polling places over time."
+  },
+  {
+    "objectID": "index.html#comparison-of-voter-turnout-rates",
+    "href": "index.html#comparison-of-voter-turnout-rates",
+    "title": "US Polling Places 2012-2020",
+    "section": "Comparison of Voter Turnout Rates",
+    "text": "Comparison of Voter Turnout Rates"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by Data Duo For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nJSD Sathwika: JSD Sathwika first-year , first class graduate student studying Data Science.\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.)."
+  },
+  {
+    "objectID": "presentation.html#introduction",
+    "href": "presentation.html#introduction",
+    "title": "US Polling Places 2012-2020",
+    "section": "Introduction",
+    "text": "Introduction\nThis project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility. Through this analysis, we hope to provide insights that can inform policies to enhance voter access and participation in future elections."
+  },
+  {
+    "objectID": "presentation.html#data-sources",
+    "href": "presentation.html#data-sources",
+    "title": "US Polling Places 2012-2020",
+    "section": "Data Sources",
+    "text": "Data Sources\n\nThe polling places data used in this presentation originates from “The Center for Public Integrity”.\nThe dataset was featured in their September 2020 article titled “National data release sheds light on past polling place changes”."
+  },
+  {
+    "objectID": "presentation.html#questions-to-answer",
+    "href": "presentation.html#questions-to-answer",
+    "title": "US Polling Places 2012-2020",
+    "section": "Questions to answer",
+    "text": "Questions to answer\nThe two questions we want to answer.\n\nQuestion 1: What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?\nQuestion 2: How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?"
+  },
+  {
+    "objectID": "presentation.html#question-1-jeevana-plot",
+    "href": "presentation.html#question-1-jeevana-plot",
+    "title": "US Polling Places 2012-2020",
+    "section": "Question 1 (Jeevana plot)",
+    "text": "Question 1 (Jeevana plot)"
+  },
+  {
+    "objectID": "presentation.html#question-2-luiss-plot",
+    "href": "presentation.html#question-2-luiss-plot",
+    "title": "US Polling Places 2012-2020",
+    "section": "Question 2 (Luis’s Plot)",
+    "text": "Question 2 (Luis’s Plot)\n\nQuestion 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?"
+  },
+  {
+    "objectID": "presentation.html#question-1-luiss-plot",
+    "href": "presentation.html#question-1-luiss-plot",
+    "title": "US Polling Places 2012-2020",
+    "section": "Question 1 (Luis’s Plot)",
+    "text": "Question 1 (Luis’s Plot)"
+  },
+  {
+    "objectID": "presentation.html#question-2-jeevana-plot",
+    "href": "presentation.html#question-2-jeevana-plot",
+    "title": "US Polling Places 2012-2020",
+    "section": "Question 2 (Jeevana Plot)",
+    "text": "Question 2 (Jeevana Plot)"
+  },
+  {
+    "objectID": "presentation.html#voter-turnout-rate-comparison",
+    "href": "presentation.html#voter-turnout-rate-comparison",
+    "title": "US Polling Places 2012-2020",
+    "section": "Voter Turnout Rate Comparison",
+    "text": "Voter Turnout Rate Comparison"
+  },
+  {
+    "objectID": "presentation.html#conclusion",
+    "href": "presentation.html#conclusion",
+    "title": "US Polling Places 2012-2020",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nIn question 1 visualization helps us understand how election logistics, such as polling place distribution, have evolved across states from 2012 to 2020.\nIn question 2, Our analysis reveals a picture of polling place trends across the United States from 2012 to 2020.\nRural areas consistently showed a higher concentration of polling places compared to urban areas.\nSpecifically, rural areas had slightly higher voter turnout rates, on average, by 3 percentage points compared to urban areas."
+  },
+  {
+    "objectID": "presentation.html#limitations",
+    "href": "presentation.html#limitations",
+    "title": "US Polling Places 2012-2020",
+    "section": "Limitations",
+    "text": "Limitations\n\nData Limitations: The dataset used may have inconsistencies or missing data that could affect the accuracy of the analysis.\nAssumed Voter Turnout Rate: The fixed voter turnout rate of 65% is an assumption and may not reflect actual turnout rates in different regions and years."
+  },
+  {
+    "objectID": "presentation.html#acknowledgments",
+    "href": "presentation.html#acknowledgments",
+    "title": "US Polling Places 2012-2020",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\n\nWe would like to express sincere thanks to my professor for their invaluable guidance.\nWe would like to extend our gratitude to The Center for Public Integrity for providing the polling places data."
+  }
+]
