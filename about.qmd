@@ -8,4 +8,4 @@ This project was developed by Data Duo For [INFO 526 - Data Analysis and Visuali
 
 -   JSD Sathwika: JSD Sathwika first-year , first class graduate student studying Data Science.
 
--   Team member 2: One sentence description of Team member 2 (e.g., year, major, etc.).
+-   Luis A Diaz : Luis A Diaz graduate student studying Data Science.

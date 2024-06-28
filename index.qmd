@@ -78,7 +78,7 @@ This project investigates the trends and factors influencing the availability an
 
 ## Introduction
 
-This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility.
+This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, undefinedwith a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility.
 
 ## Data Sources
 
@@ -276,3 +276,9 @@ ggplot(voter_turnout_summary, aes(x = area_type, y = avg_turnout_rate, fill = ar
 
 
 ```
+
+## Discussion 
+
+We've observed significant changes in the number of polling places across various states from 2012 to 2020. These trends, influenced by changes in state laws, population shifts, and administrative decisions, have important implications for voter accessibility and turnout.
+
+The point highlights the dynamic nature of polling place availability and its impact on voters.

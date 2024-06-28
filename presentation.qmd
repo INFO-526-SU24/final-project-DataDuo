@@ -115,7 +115,7 @@ The two questions we want to answer.
 
 -   **Question 2**: How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?
 
-## Question 1 (Jeevana plot)
+## Question 1 
 
 ```{r}
 
@@ -149,11 +149,7 @@ ggplot(polling_places_trends, aes(x = election_date, y = number_of_polling_place
 
 ```
 
-## Question 2 (Luis's Plot)
-
--   Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?
-
-## Question 1 (Luis's Plot)
+## Question 1 
 
 ```{r, warning=FALSE, fig.width=5.5}
 
@@ -202,7 +198,7 @@ polling_places_state2  |>
 
 ```
 
-## Question 2 (Jeevana Plot)
+## Question 2 
 
 ```{r}
 
