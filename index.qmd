@@ -71,10 +71,10 @@ pacman::p_load(tidyverse,
                sf)
 
 ```
+
 ## Abstract
 
 This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset from TidyTuesday that includes information on polling locations, years active, demographic details of precincts, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions. Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and how does this disparity affect voter turnout? Through this analysis, we seek to provide insights that can inform policies to enhance voter access and participation in future elections.
-
 
 ## Introduction
 
@@ -276,4 +276,3 @@ ggplot(voter_turnout_summary, aes(x = area_type, y = avg_turnout_rate, fill = ar
 
 
 ```
-
