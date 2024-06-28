@@ -8,7 +8,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.554">
+  <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="DataDuo">
   <title>Project Title - US Polling Places 2012-2020</title>
@@ -357,22 +357,16 @@ DataDuo
 <li><p><strong>Question 2</strong>: How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?</p></li>
 </ul>
 </section>
-<section id="question-1-jeevana-plot" class="slide level2">
-<h2>Question 1 (Jeevana plot)</h2>
+<section id="question-1" class="slide level2">
+<h2>Question 1</h2>
 
 <img data-src="presentation_files/figure-revealjs/unnamed-chunk-4-1.png" width="1800" class="r-stretch"></section>
-<section id="question-2-luiss-plot" class="slide level2">
-<h2>Question 2 (Luis’s Plot)</h2>
-<ul>
-<li>Question 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?</li>
-</ul>
-</section>
-<section id="question-1-luiss-plot" class="slide level2">
-<h2>Question 1 (Luis’s Plot)</h2>
+<section id="question-1-1" class="slide level2">
+<h2>Question 1</h2>
 
 <img data-src="presentation_files/figure-revealjs/unnamed-chunk-5-1.png" width="1650" class="r-stretch"></section>
-<section id="question-2-jeevana-plot" class="slide level2">
-<h2>Question 2 (Jeevana Plot)</h2>
+<section id="question-2" class="slide level2">
+<h2>Question 2</h2>
 
 <img data-src="presentation_files/figure-revealjs/unnamed-chunk-6-1.png" width="1800" class="r-stretch"></section>
 <section id="voter-turnout-rate-comparison" class="slide level2">
@@ -619,42 +613,80 @@ DataDuo
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {

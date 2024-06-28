@@ -53,7 +53,7 @@
     "href": "index.html#introduction",
     "title": "US Polling Places 2012-2020",
     "section": "Introduction",
-    "text": "Introduction\nThis project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility."
+    "text": "Introduction\nThis project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, undefinedwith a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility."
   },
   {
     "objectID": "index.html#data-sources",
@@ -91,6 +91,20 @@
     "text": "Comparison of Voter Turnout Rates"
   },
   {
+    "objectID": "index.html#discussion",
+    "href": "index.html#discussion",
+    "title": "US Polling Places 2012-2020",
+    "section": "Discussion",
+    "text": "Discussion\nWe’ve observed significant changes in the number of polling places across various states from 2012 to 2020. These trends, influenced by changes in state laws, population shifts, and administrative decisions, have important implications for voter accessibility and turnout.\nThe point highlights the dynamic nature of polling place availability and its impact on voters."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by Data Duo For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nJSD Sathwika: JSD Sathwika first-year , first class graduate student studying Data Science.\nLuis A Diaz : Luis A Diaz graduate student studying Data Science."
+  },
+  {
     "objectID": "presentation.html#introduction",
     "href": "presentation.html#introduction",
     "title": "US Polling Places 2012-2020",
@@ -112,32 +126,25 @@
     "text": "Questions to answer\nThe two questions we want to answer.\n\nQuestion 1: What are the trends in the number of polling places over time, both nationally and across different states from 2012 to 2020?\nQuestion 2: How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?"
   },
   {
-    "objectID": "presentation.html#question-1-jeevana-plot",
-    "href": "presentation.html#question-1-jeevana-plot",
+    "objectID": "presentation.html#question-1",
+    "href": "presentation.html#question-1",
     "title": "US Polling Places 2012-2020",
-    "section": "Question 1 (Jeevana plot)",
-    "text": "Question 1 (Jeevana plot)"
+    "section": "Question 1",
+    "text": "Question 1"
   },
   {
-    "objectID": "presentation.html#question-2-luiss-plot",
-    "href": "presentation.html#question-2-luiss-plot",
+    "objectID": "presentation.html#question-1-1",
+    "href": "presentation.html#question-1-1",
     "title": "US Polling Places 2012-2020",
-    "section": "Question 2 (Luis’s Plot)",
-    "text": "Question 2 (Luis’s Plot)\n\nQuestion 2 : How does the availability of polling places vary between urban and rural areas, and what impact does this disparity have on voter turnout?"
+    "section": "Question 1",
+    "text": "Question 1"
   },
   {
-    "objectID": "presentation.html#question-1-luiss-plot",
-    "href": "presentation.html#question-1-luiss-plot",
+    "objectID": "presentation.html#question-2",
+    "href": "presentation.html#question-2",
     "title": "US Polling Places 2012-2020",
-    "section": "Question 1 (Luis’s Plot)",
-    "text": "Question 1 (Luis’s Plot)"
-  },
-  {
-    "objectID": "presentation.html#question-2-jeevana-plot",
-    "href": "presentation.html#question-2-jeevana-plot",
-    "title": "US Polling Places 2012-2020",
-    "section": "Question 2 (Jeevana Plot)",
-    "text": "Question 2 (Jeevana Plot)"
+    "section": "Question 2",
+    "text": "Question 2"
   },
   {
     "objectID": "presentation.html#voter-turnout-rate-comparison",
@@ -166,12 +173,5 @@
     "title": "US Polling Places 2012-2020",
     "section": "Acknowledgments",
     "text": "Acknowledgments\n\nWe would like to express sincere thanks to my professor for their invaluable guidance.\nWe would like to extend our gratitude to The Center for Public Integrity for providing the polling places data."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This project was developed by Data Duo For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nJSD Sathwika: JSD Sathwika first-year , first class graduate student studying Data Science.\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.)."
   }
 ]
