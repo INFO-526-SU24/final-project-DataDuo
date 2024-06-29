@@ -4761,6 +4761,7 @@ vertical-align: -.125em;
   <li><a href="#trends-in-polling-place-availability-from-2012-to-2020" id="toc-trends-in-polling-place-availability-from-2012-to-2020" class="nav-link" data-scroll-target="#trends-in-polling-place-availability-from-2012-to-2020">Trends in Polling Place Availability from 2012 to 2020</a></li>
   <li><a href="#distribution-of-polling-places-urban-vs-rural" id="toc-distribution-of-polling-places-urban-vs-rural" class="nav-link" data-scroll-target="#distribution-of-polling-places-urban-vs-rural">Distribution of Polling Places (Urban vs Rural)</a></li>
   <li><a href="#comparison-of-voter-turnout-rates" id="toc-comparison-of-voter-turnout-rates" class="nav-link" data-scroll-target="#comparison-of-voter-turnout-rates">Comparison of Voter Turnout Rates</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
   </ul>
 </nav>
     </div>
@@ -4811,7 +4812,7 @@ vertical-align: -.125em;
 </section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility.</p>
+<p>This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, undefinedwith a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility.</p>
 </section>
 <section id="data-sources" class="level2">
 <h2 class="anchored" data-anchor-id="data-sources">Data Sources</h2>
@@ -4872,6 +4873,11 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>We’ve observed significant changes in the number of polling places across various states from 2012 to 2020. These trends, influenced by changes in state laws, population shifts, and administrative decisions, have important implications for voter accessibility and turnout.</p>
+<p>The point highlights the dynamic nature of polling place availability and its impact on voters.</p>
 
 
 <!-- -->
@@ -5155,7 +5161,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/INFO-526-SU24\.github\.io\/final-project-DataDuo\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -5555,14 +5561,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>               sf)</span>
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Abstract</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset from TidyTuesday that includes information on polling locations, years active, demographic details of precincts, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions. Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and how does this disparity affect voter turnout? Through this analysis, we seek to provide insights that can inform policies to enhance voter access and participation in future elections.</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Abstract</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>This project investigates the trends and factors influencing the availability and accessibility of US polling places from 2012 to 2020. Using a dataset from TidyTuesday that includes information on polling locations, years active, demographic details of precincts, and changes in polling place locations, we aim to understand how these variables have evolved over time and across different regions. Our analysis focuses on two key questions: First, what are the national and state-level trends in the number of polling places from 2012 to 2020? Second, how does the availability of polling places differ between urban and rural areas, and how does this disparity affect voter turnout? Through this analysis, we seek to provide insights that can inform policies to enhance voter access and participation in future elections.</span>
 <span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
 <span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, with a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility.</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>This project aims to analyze the trends in polling place availability across the United States from 2012 to 2020, undefinedwith a specific focus on temporal changes and geographic disparities. By examining national and state-level data, as well as differences between urban and rural areas, this project seeks to understand the factors influencing polling place changes and their impact on voter accessibility.</span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Sources</span></span>
 <span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
@@ -5755,6 +5761,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a><span class="fu">## Discussion </span></span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a>We&#39;ve observed significant changes in the number of polling places across various states from 2012 to 2020. These trends, influenced by changes in state laws, population shifts, and administrative decisions, have important implications for voter accessibility and turnout.</span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a>The point highlights the dynamic nature of polling place availability and its impact on voters.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
